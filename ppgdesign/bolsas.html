@@ -41,7 +41,9 @@
 </html>
 
 <div id="observablehq-menu"></div>
-<h1 id="observablehq-titulo">Bolsas PPGDesign | Propesqi / Propg</h1>
+<h1 id="observablehq-titulo">Bolsas PPGDesign</h1>
+
+<div id="observablehq-texto"></div>
 
 <div id="observablehq-botoes"></div>
 <br />
@@ -61,6 +63,9 @@
   new Runtime().module(define, (name) => {
     if (name === "menu")
       return new Inspector(document.querySelector("#observablehq-menu"));
+
+    if (name === "texto")
+      return new Inspector(document.querySelector("#observablehq-texto"));
 
     if (name === "viewof filtros")
       return new Inspector(
