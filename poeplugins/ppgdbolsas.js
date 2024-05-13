@@ -411,6 +411,10 @@ let ppgdbolsas = function (par) {
 
         }
 
+        .gridcom::-webkit-scrollbar {
+            width: 5px;
+            }
+
         .timeliner {
             overflow: auto;
         }
@@ -464,7 +468,8 @@ let ppgdbolsas = function (par) {
         }
 
         .timeliner_hoje {
-            fill: var(--text-color, #a7caca);
+            fill: var(--input-text, #a7caca);
+            opacity: 0.2;
         }
 
         </style>
