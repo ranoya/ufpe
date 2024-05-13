@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Atas Públicas</title>
+    <meta property="og:title" content="Atas Públicas" />
+    <meta name="generator" content="observablehq" />
+    <meta
+      name="description"
+      content="Atas Públicas do Departamento de Design"
+    />
+    <meta
+      property="og:description"
+      content="Atas Públicas do Departamento de Design"
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta property="og:url" content="https://url" />
+    <meta property="og:type" content="dashboard" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="Atas Públicas" />
+    <meta name="application-name" content="Atas Públicas" />
+
+    <style>
+      body,
+      html {
+        margin: 40px;
+      }
+
+      .gridatas {
+        width: calc(100% - 30px) !important;
+        gap: 10px 15px !important;
+      }
+
+      #informacoes {
+        margin-left: -20px !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Atas Públicas</h1>
+    <h3>
+      Departamento de Design da Universidade Federal de Pernambuco |
+      dDesign/UFPE
+    </h3>
+    <br /><br />
+    <div id="search"></div>
+    <br /><br />
+    <div id="informacoes"></div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+    />
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/@ranoya/atasdepartamento.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "viewof filtros")
+          return new Inspector(document.querySelector("#search"));
+        if (name === "publicatas")
+          return new Inspector(document.querySelector("#informacoes"));
+        return ["viewof atas"].includes(name);
+      });
+    </script>
+  </body>
+</html>
