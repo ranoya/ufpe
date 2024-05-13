@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<!-- 
+  Revisão 2.1:
+
+  Dificuldades com o publish do Observable
+  Versões cacheadas não são atualizadas para
+  a última publicação;
+  Despublicar quebra o javascript de exportação
+  e o processo precisa ser feito do zero
+
+  Inclusão do termo Semanais no extrato de horas
+
+-->
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>CPPD</title>
+    <meta property="og:title" content="CAC" />
+    <meta name="generator" content="static" />
+    <meta name="description" content="ferramentas para a CPPD" />
+    <meta property="og:description" content="ferramentas para a CPPD" />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta property="og:url" content="https://cac-ufpe.vercel.app/plenocppd" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="CAC" />
+    <meta name="application-name" content="CAC" />
+
+    <style>
+      body {
+        margin: 40px;
+      }
+    </style>
+  </head>
+
+  <body></body>
+</html>
+
+<div id="observablehq-menu"></div>
+<h1 id="observablehq-titulo">Pendências da CPPD</h1>
+
+<br />
+
+<br /><br />
+<div id="observablehq-tabelea"></div>
+<div id="observablehq-estilo"></div>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@3/dist/inspector.css"
+/>
+<script type="module">
+  import {
+    Runtime,
+    Inspector,
+  } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@4/dist/runtime.js";
+  import define from "https://api.observablehq.com/@ranoya/cppd-ufpe.js?v=3";
+  new Runtime().module(define, (name) => {
+    if (name === "menu")
+      return new Inspector(document.querySelector("#observablehq-menu"));
+    if (name === "titulopendencias")
+      return new Inspector(document.querySelector("#observablehq-titulo"));
+
+    if (name === "listapendencias")
+      return new Inspector(document.querySelector("#observablehq-tabelea"));
+    if (name === "estilo")
+      return new Inspector(document.querySelector("#observablehq-estilo"));
+  });
+</script>
