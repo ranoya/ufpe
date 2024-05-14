@@ -135,6 +135,14 @@
 
     if (eano(dataA) < eano(dataB) && eano(dataB) < eano(dataC)) {
       restult = true;
+    } else if (eano(dataA) < eano(dataB) && eano(dataB) == eano(dataC)) {
+      if (emes(dataB) < emes(dataC)) {
+        restult = true;
+      }
+
+      if (emes(dataB) == emes(dataC) && edia(dataB) <= edia(dataC)) {
+        restult = true;
+      }
     } else if (eano(dataA) == eano(dataB) && emes(dataA) < emes(dataB)) {
       if (eano(dataB) < eano(dataC)) {
         restult = true;
@@ -228,7 +236,7 @@
                 <div>Linha</div><b class="centra">M</b><b class="centra">D</b>
                 <b>DI</b><div class="centra">${arr["MDI"]}</div><div class="centra">${arr["DDI"]}</div>
                 <b>DAD</b><div class="centra">${arr["MDAD"]}</div><div class="centra">${arr["DDAD"]}</div>
-                <b>DET</b><div class="centra">${arr["MDET"]}</div><div class="centra">${arr["DDET"]}</div> 
+                <b>DET</b><div class="centra">${arr["MDET"]}</div><div class="centra">${arr["DDET"]}</div>
                 <b>DCA</b><div class="centra">${arr["MDCA"]}</div><div class="centra">${arr["DDCA"]}</div>
                 <div>Totais</div><b class="centra">${arr["M"]}</b><b class="centra">${arr["D"]}</b>
 
