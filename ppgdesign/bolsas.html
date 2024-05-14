@@ -36,15 +36,6 @@
       body {
         margin: 40px;
       }
-
-      #painel {
-        position: absolute;
-        z-index: 1000;
-        width: 200px;
-        height: 200px;
-        background-color: red;
-        color: white;
-      }
     </style>
   </head>
 
@@ -102,9 +93,9 @@
   apresentapainel = function (dia) {
     screen("#painel").innerHTML = "Oi";
 
-    if (mouseX > screenWidth - 200) {
+    if (mouseX > screenWidth - 350) {
       screen("#painel").left = "auto";
-      screen("#painel").right = screenWidth - (mouseX + 30) + "px";
+      screen("#painel").right = screenWidth - (mouseX + 60) + "px";
     } else {
       screen("#painel").left = mouseX + 30 + "px";
       screen("#painel").right = "auto";
