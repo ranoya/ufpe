@@ -94,11 +94,9 @@
     screen("#painel").innerHTML = "Oi";
 
     if (mouseX > screenWidth - 350) {
-      screen("#painel").left = "auto";
-      screen("#painel").right = screenWidth - 100 - mouseX + "px";
+      screen("#painel").left = mouseX - screen("#painel").width - 30 + "px";
     } else {
       screen("#painel").left = mouseX + 30 + "px";
-      screen("#painel").right = "auto";
     }
     screen("#painel").top = mouseY - 80 + "px";
     screen("#painel").display = "block";
