@@ -40,7 +40,10 @@
       #painel {
         position: absolute;
         z-index: 1000;
-        display: none;
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        color: white;
       }
     </style>
   </head>
@@ -103,7 +106,5 @@
     screen("#painel").display = "absolute";
   };
 
-  resetapainel = function () {
-    screen("#painel").display = "none";
-  };
+  resetapainel = function () {};
 </script>
