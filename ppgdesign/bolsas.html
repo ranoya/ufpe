@@ -31,6 +31,7 @@
     <meta name="application-name" content="PPGDesign" />
 
     <script src="https://datat.vercel.app/screenmin.js"></script>
+    <script src="https://datat.vercel.app/basicsmin.js"></script>
 
     <style>
       body {
@@ -90,6 +91,15 @@
 </script>
 
 <script>
+  let todosdados = [];
+
+  gsdata(
+    "https://docs.google.com/spreadsheets/d/1tjmcRwo4mLUYKrlitWA1c41T8iWebQcpBjEw77Y5LpU/edit#gid=308662190",
+    function (dados) {
+      todosdados = dados;
+    }
+  );
+
   const extraimes = function (valor) {
     let patt = /\d{1,2}/gi;
     let arr = valor.match(patt);
@@ -204,14 +214,14 @@
     return contab;
   };
 
-  const apresentapainel = function (data, dados) {
+  const apresentapainel = function (data) {
     let dia = "10/04/2023";
 
     if (typeof data != "undefined" && data != "" && data != null) {
       dia = data;
     }
 
-    let arr = compiladados(dados, dia);
+    let arr = compiladados(todosdados, dia);
 
     let code = `<div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px; gap: 8px 8px;">
 
