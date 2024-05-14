@@ -30,9 +30,17 @@
     <meta property="og:site_name" content="PPGDesign" />
     <meta name="application-name" content="PPGDesign" />
 
+    <script src="https://datat.vercel.app/screenmin.js"></script>
+
     <style>
       body {
         margin: 40px;
+      }
+
+      #painel {
+        position: absolute;
+        z-index: 1000;
+        display: none;
       }
     </style>
   </head>
@@ -53,6 +61,8 @@
 <br /><br />
 <div id="observablehq-tabelea"></div>
 <div id="observablehq-estilo"></div>
+
+<div id="painel"></div>
 
 <script type="module">
   import {
@@ -83,4 +93,17 @@
     if (name === "estilo")
       return new Inspector(document.querySelector("#observablehq-estilo"));
   });
+</script>
+
+<script>
+  apresentapainel = function (dia) {
+    screen("#painel").innerHTML = "Oi";
+    screen("#painel").left = mouseX + "px";
+    screen("#painel").top = mouseY - 80 + "px";
+    screen("#painel").display = "absolute";
+  };
+
+  resetapainel = function () {
+    screen("#painel").display = "none";
+  };
 </script>
