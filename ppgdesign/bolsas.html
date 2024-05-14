@@ -55,6 +55,10 @@
 
 <br /><br />
 <div id="observablehq-tabelea"></div>
+
+<div id="observablehq-textoorientador"></div>
+<div id="observablehq-tabelaorientador"></div>
+
 <div id="observablehq-estilo"></div>
 
 <div id="painel"></div>
@@ -87,6 +91,16 @@
       return new Inspector(document.querySelector("#observablehq-tabelea"));
     if (name === "estilo")
       return new Inspector(document.querySelector("#observablehq-estilo"));
+
+    if (name === "textoorientador")
+      return new Inspector(
+        document.querySelector("#observablehq-textoorientador")
+      );
+
+    if (name === "dadospororientador")
+      return new Inspector(
+        document.querySelector("#observablehq-tabelaorientador")
+      );
   });
 </script>
 
