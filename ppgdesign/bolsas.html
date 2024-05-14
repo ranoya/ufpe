@@ -104,7 +104,7 @@
 
     if (mouseX > screenWidth - 200) {
       screen("#painel").left = "auto";
-      screen("#painel").right = mouseX - 30 + "px";
+      screen("#painel").right = screenWidth - (mouseX + 30) + "px";
     } else {
       screen("#painel").left = mouseX + 30 + "px";
       screen("#painel").right = "auto";
