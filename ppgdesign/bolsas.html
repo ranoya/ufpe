@@ -59,6 +59,9 @@
 <div id="observablehq-textoorientador"></div>
 <div id="observablehq-tabelaorientador"></div>
 
+<div id="observablehq-textocomissoes"></div>
+<div id="observablehq-tabelacomissoesbolsa"></div>
+
 <div id="observablehq-estilo"></div>
 
 <div id="painel"></div>
@@ -100,6 +103,16 @@
     if (name === "dadospororientador")
       return new Inspector(
         document.querySelector("#observablehq-tabelaorientador")
+      );
+
+    if (name === "textocomissoes")
+      return new Inspector(
+        document.querySelector("#observablehq-textocomissoes")
+      );
+
+    if (name === "tabelacomissoesbolsa")
+      return new Inspector(
+        document.querySelector("#observablehq-tabelacomissoesbolsa")
       );
   });
 </script>
