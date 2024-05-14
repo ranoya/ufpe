@@ -225,18 +225,18 @@
 
     let code = `<div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px; gap: 8px 8px;">
 
-                <div>Linha</div><b>M</b><b>D</b>
-                <b>DI</b><b>${arr["MDI"]}</b><b>${arr["DDI"]}</b>
-                <b>DAD</b><b>${arr["MDAD"]}</b><b>${arr["DDAD"]}</b>
-                <b>DET</b><b>${arr["MDET"]}</b><b>${arr["DDET"]}</b> 
-                <b>DCA</b><b>${arr["MDCA"]}</b><b>${arr["DDCA"]}</b>
-                <div>Totais</div><div>${arr["M"]}</div><div>${arr["D"]}</div>
+                <div>Linha</div><b class="centra">M</b><b class="centra">D</b>
+                <b>DI</b><div class="centra">${arr["MDI"]}</div><div class="centra">${arr["DDI"]}</div>
+                <b>DAD</b><div class="centra">${arr["MDAD"]}</div><div class="centra">${arr["DDAD"]}</div>
+                <b>DET</b><div class="centra">${arr["MDET"]}</div><div class="centra">${arr["DDET"]}</div> 
+                <b>DCA</b><div class="centra">${arr["MDCA"]}</div><div class="centra">${arr["DDCA"]}</div>
+                <div>Totais</div><b class="centra">${arr["M"]}</b><b class="centra">${arr["D"]}</b>
 
       </div>
     `;
 
     if (mouseX > screenWidth - 350) {
-      screen("#painel").left = mouseX - 230 + "px";
+      screen("#painel").left = mouseX - 150 + "px";
     } else {
       screen("#painel").left = mouseX + 30 + "px";
     }
