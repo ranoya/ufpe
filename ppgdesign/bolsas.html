@@ -101,10 +101,17 @@
 <script>
   apresentapainel = function (dia) {
     screen("#painel").innerHTML = "Oi";
-    screen("#painel").left = mouseX + "px";
+
+    if (mouseX > screenWidth - 200) {
+      screen("#painel").right = mouseX - 30 + "px";
+    } else {
+      screen("#painel").left = mouseX + 30 + "px";
+    }
     screen("#painel").top = mouseY - 80 + "px";
     screen("#painel").display = "absolute";
   };
 
-  resetapainel = function () {};
+  resetapainel = function () {
+    screen("#painel").display = "none";
+  };
 </script>
