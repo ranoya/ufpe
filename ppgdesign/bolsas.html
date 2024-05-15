@@ -257,8 +257,9 @@
     }
 
     let arr = compiladados(todosdados, dia);
+    let diasimples = emes(dia) + "/" + eano(dia);
 
-    let code = `<div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px; gap: 8px 8px;">
+    let code = `<b>${diasimples}</b><br><div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px; gap: 8px 8px;">
 
                 <div>Linha</div><b class="centra">M</b><b class="centra">D</b>
                 <b>DI</b><div class="centra">${arr["MDI"]}</div><div class="centra">${arr["DDI"]}</div>
