@@ -259,7 +259,7 @@
     let arr = compiladados(todosdados, dia);
     let diasimples = emes(dia) + "/" + eano(dia);
 
-    let code = `<b>${diasimples}</b><div style='width: 100%; height: 1px; background-color: #aaaaaa; margin-top: 6px; margin-bottom: 6px;'></div><div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px 4px; gap: 8px 8px;">
+    let code = `<b>${diasimples}</b><div style='width: 100%; height: 1px; background-color: #aaaaaa; margin-top: 6px; margin-bottom: 6px;'></div><div style="font-size: 12px; font-weight: lighter; width: 100%; display: grid; grid-template-columns: 1fr 40px 40px 40px; gap: 8px 8px;">
 
                 <div>Linha</div><b class="centra">M</b><b class="centra">D</b><div class="centra">T</div>
                 <b>DI</b><div class="centra">${
@@ -288,9 +288,9 @@
     `;
 
     if (mouseX > screenWidth - 350) {
-      screen("#painel").left = mouseX - 170 + "px";
+      screen("#painel").left = mouseX - 210 + "px";
     } else {
-      screen("#painel").left = mouseX + 50 + "px";
+      screen("#painel").left = mouseX + 90 + "px";
     }
     screen("#painel").top = mouseY - 80 + "px";
     screen("#painel").display = "block";
