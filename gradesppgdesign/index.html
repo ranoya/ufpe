@@ -43,6 +43,19 @@
     <div id="observablehq-estaile-a3856ea4"></div>
   </body>
 
+  <div id="observablehq-viewof-filtros-a3856ea4"></div>
+  <div id="observablehq-viewof-shadowfiltros-a3856ea4"></div>
+  <div id="observablehq-semestres-a3856ea4"></div>
+  <div id="observablehq-botoes-a3856ea4"></div>
+  <div id="observablehq-viz-a3856ea4"></div>
+  <div id="observablehq-estaile-a3856ea4"></div>
+  <p>
+    Credit:
+    <a href="https://observablehq.com/@ranoya/grade-ppgdesign"
+      >Grade PPGDesign by Guilherme Ranoya</a
+    >
+  </p>
+
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
@@ -62,6 +75,10 @@
         return new Inspector(
           document.querySelector("#observablehq-viewof-shadowfiltros-a3856ea4")
         );
+      if (name === "semestres")
+        return new Inspector(
+          document.querySelector("#observablehq-semestres-a3856ea4")
+        );
       if (name === "botoes")
         return new Inspector(
           document.querySelector("#observablehq-botoes-a3856ea4")
@@ -74,7 +91,7 @@
         return new Inspector(
           document.querySelector("#observablehq-estaile-a3856ea4")
         );
-      return ["semestres", "viewof grade", "periodos"].includes(name);
+      return ["viewof grade", "periodos"].includes(name);
     });
   </script>
 </html>
