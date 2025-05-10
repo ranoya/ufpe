@@ -87,4 +87,33 @@
       return ["viewof grade", "periodos"].includes(name);
     });
   </script>
+
+  <script>
+    $_GET = [];
+    (function () {
+      corte = window.location.href.toString().indexOf("?");
+      if (corte > 0) {
+        argumento = window.location.href.toString().substring(corte + 1);
+        argumentos = argumento.split("&");
+        for (arg in argumentos) {
+          let argCorte = argumentos[arg].indexOf("=");
+          $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[
+            arg
+          ].substring(argCorte + 1);
+        }
+      }
+    })();
+
+    if (
+      typeof $_GET["filtra"] != "undefined" &&
+      $_GET["filtra"] != null &&
+      $_GET["filtra"] != ""
+    ) {
+      setTimeout(() => {
+        let inpt = document.getElementsByTagName("input")[0];
+        inpt.value = $_GET["filtra"];
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      }, 1200);
+    }
+  </script>
 </html>
