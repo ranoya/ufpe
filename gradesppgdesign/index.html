@@ -111,7 +111,7 @@
     ) {
       setTimeout(() => {
         let inpt = document.getElementsByTagName("input")[0];
-        inpt.value = $_GET["filtra"];
+        inpt.value = decodeURIComponent($_GET["filtra"]);
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
       }, 1200);
     }
