@@ -109,13 +109,13 @@
       $_GET["filtra"] != null &&
       $_GET["filtra"] != ""
     ) {
-      let muda = setTimeout(() => {
+      let muda = setInterval(() => {
         let inpt = document.getElementsByTagName("input")[0];
         if (inpt.value != decodeURIComponent($_GET["filtra"])) {
           inpt.value = decodeURIComponent($_GET["filtra"]);
           inpt.dispatchEvent(new Event("input", { bubbles: true }));
         } else {
-          clearTimeout(muda);
+          clearInterval(muda);
         }
       }, 100);
     }
