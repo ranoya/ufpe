@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<!-- 
+
+  fg=bbbbbb -> cor foreground
+  bg=000000 -> cor background
+
+  ?filtro= -> filtra na planilha
+
+
+-->
+
+<head>
+    <meta charset='utf-8'>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="generator" content="artesanal" />
+    <meta name="keywords" content="Design da informação, experiência, visualização, dataviz" />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta property="og:url" content="https://www.ranoya.com/pt/profile" />
+    <meta property="og:profile" content="profile:Guilherme Ranoya" />
+
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="ranoya.com" />
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHX4HMZPP1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-BHX4HMZPP1');
+    </script>
+
+    <script src="https://www.ranoya.com/Assets/JSLibs/DataT/basics.js"></script>
+
+    <script>
+        $_GET = [];
+        (function() {
+            corte = window.location.href.toString().indexOf('?');
+            if (corte > 0) {
+                argumento = window.location.href.toString().substring(corte + 1);
+                argumentos = argumento.split('&');
+                for (arg in argumentos) {
+                    let argCorte = argumentos[arg].indexOf('=');
+                    $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[arg].substring(argCorte + 1);
+                }
+            }
+        })();
+    </script>
+
+
+    <style>
+        ::root {
+
+            --bg-color: #FFFFFF;
+            --fg-color: #888888;
+            --ranoyav2-text: var(--fg-color, #888888);
+            --ranoyav2-border: color-mix(in srgb, #FF7F50 0%, var(--fg-color, #888888) 40%);
+            --ranoyav2-bg: var(--bg-color, #FFFFFF);
+            --ranoyav2-transplight: color-mix(in srgb, #FF7F50 0%, var(--bg-color, #FFFFFF) 80%);
+
+
+        }
+        body {
+            margin: 0;
+            padding: 0;
+
+            background-color: var(--bg-color, #FFFFFF);
+
+        }
+
+       
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+
+        #conteudo {
+            max-width: 1200px;
+            padding: 24px;
+            width: calc(100% - 48px);
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Helvetica, Arial, sans-serif;
+            color: var(--ranoyav2-text, #888888);
+            text-decoration: none;
+            font-size: 20px;
+            line-height: 26px;
+            font-weight: lighter;
+            position: relative;
+            z-index: 100;
+            background-color: var(--ranoyav2-bg, #FFFFFF);
+        }
+
+        #conteudo a {
+            display: block;
+            padding: 20px 16px 20px 16px;
+            margin: -8px -16px -8px -16px;
+            background-color: transparent;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: var(--ranoyav2-text, #888888);
+            
+            border-top: 1px solid var(--ranoyav2-border, #88888844);
+        }
+
+        #conteudo a:hover {
+            background-color: var(--ranoyav2-text, #888888);
+            color: var(--ranoyav2-bg, #FFFFFF);
+        }
+
+
+        .bgs {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            height: 40vh;
+            display: block;
+        }
+
+        ::-webkit-scrollbar:hover {
+            background-color: var(--ranoyav2-bg, #FFFFFF);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+            background-color: var(--ranoyav2-bg, #FFFFFF);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: transparent;
+            background-color: transparent;
+            opacity: 1;
+            background-size: 4px 4px;
+            background-color: var(--ranoyav2-text, #888888);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-right: 5px solid transparent;
+            background-color: transparent;
+            opacity: 1;
+            background-size: 4px 4px;
+            background-color: var(--ranoyav2-text, #888888);
+        }
+        ::-webkit-scrollbar-track:hover {
+            background: var(--ranoyav2-bg, #FFFFFF);
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--ranoyav2-bg, #FFFFFF);
+        }
+
+        .pequeno {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .custom_input {
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 80%;
+            height: 40%;
+            left: 10%;
+            top: 30%;
+            z-index: 2000;
+            display: none;
+        }
+
+        .input {
+            font-size: 100px;
+            font-weight: bold;
+            padding: 25px 27px;
+            width: 100%;
+            padding-left: 100px;
+            outline: none;
+            background: var(--ranoyav2-transplight, #FFFFFFe5); 
+            color: var(--ranoya-text, #888888);
+            border: 0;
+            border-radius: 0;
+            box-shadow: 0px 0px 30px 6px #44444433;
+            transition: .3s ease;
+        }
+
+        .input:focus {
+            background: var(--ranoyav2-transplight, #FFFFFFe5); 
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .input::placeholder {
+            color: #DDDDDD44;
+        }
+
+        .svg_icon {
+            position: absolute;
+            left: 4px;
+            fill: var(--ranoyav2-text, #888888);
+            width: 100px;
+            height: 100px;
+        }
+
+        </style>
+
+        <script>
+            if (typeof $_GET['bg'] != 'undefined' && $_GET['bg'] != null && $_GET['bg'] != '') {
+                document.documentElement.style.setProperty('--bg-color', "#" + $_GET['bg']);
+            }
+
+            if (typeof $_GET['fg'] != 'undefined' && $_GET['fg'] != null && $_GET['fg'] != '') {
+                document.documentElement.style.setProperty('--fg-color', "#" + $_GET['fg']);
+            }
+            
+   
+        </script>
+</head>
+
+<body>
+
+    <div id="inputwrap" class="custom_input">
+        
+     <svg xmlns="http://www.w3.org/2000/svg" class="svg_icon bi-exclude" viewBox="-8 0 32 16">
+  <path d="M0 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2H2a2 2 0 0 1-2-2V2zm5 10v2a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2v5a2 2 0 0 1-2 2H5zm6-8V2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h2V6a2 2 0 0 1 2-2h5z"></path>
+</svg>
+</svg>
+    <input id="filtrador" class="input" type="text" placeholder="Filtra">
+</div>
+
+    <div id='conteudo'></div>
+
+
+
+
+    <script>
+
+        omnifilter = function(dados) {
+
+            let link = "linkaberto";
+            if (typeof $_GET['p'] != 'undefined' && $_GET['p'] != null && $_GET['p'] != '') {
+               link = "link";
+            }
+            
+
+            let data = [];
+
+            if (typeof $_GET['filtra'] != "undefined" && $_GET['filtra'] != "" && $_GET['filtra'] != null) {
+                data = select(dados, multipatterncheck_exclude, decodeURI($_GET['filtra']));
+            } else {
+                data = dados;
+            }
+
+            let code = "";
+            let bgcodes = "";
+
+            if (typeof $_GET['titulo'] != 'undefined' && $_GET['titulo'] != null && $_GET['titulo'] != '') {
+               code += `<h1>${decodeURI($_GET['titulo'])}</h1>`;
+            }
+            
+
+            for (let i = 0; i < data.length; i++) {
+
+                code += `<a target='_blank' href='${data[i][link]}'>${data[i].titulo}<br><span class="pequeno">${data[i]['veiculo'] + ". " + data[i].ano}.</span></a>`;
+                
+            }
+
+            document.getElementById("conteudo").innerHTML = code;
+
+
+        }
+
+        omnifilterfetchcsvdata(GoogleSheetCsvURL("https://docs.google.com/spreadsheets/d/1tjmcRwo4mLUYKrlitWA1c41T8iWebQcpBjEw77Y5LpU/edit?gid=1989392845#gid=1989392845"), "filtrador");
+
+        
+
+        let abrefecha = "";
+
+        document.addEventListener("keydown", function (event) {
+
+            clearTimeout(abrefecha);
+
+            
+            
+            document.getElementById("inputwrap").style.display = "flex";
+            document.getElementById('filtrador').focus();
+
+            abrefecha = setTimeout(function () {
+
+                document.getElementById("inputwrap").style.display = "none";
+            },2500);
+
+          });
+    </script>
+
+</body>
