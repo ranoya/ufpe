@@ -25,7 +25,11 @@
       }
 
       .dropz {
-        border: 1px solid black;
+        background-color: #eeeeee;
+      }
+
+      .onhover {
+        background-color: #cccccc;
       }
 
       .nodrop {
@@ -116,7 +120,7 @@
 
         // Manhã
         for (let m = 0; m < momentos.length; m++) {
-          code += `<div class="dropz">`;
+          code += `<div class="dropz" id="${momentos[m]}">`;
 
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
@@ -176,6 +180,12 @@
           // Add dragover event listener to the drop zone
           dropZone[i].addEventListener("dragover", (e) => {
             e.preventDefault(); // Prevent default to allow drop
+            dropZone[i].classList.add("onhover");
+          });
+
+          dropZone[i].addEventListener("dragleave", (e) => {
+            e.preventDefault(); // Prevent default to allow drop
+            dropZone[i].classList.remove("onhover");
           });
 
           // Add drop event listener to the drop zone
