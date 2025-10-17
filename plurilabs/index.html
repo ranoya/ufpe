@@ -104,6 +104,7 @@
         line-height: 40px;
         cursor: pointer;
         transition: all 0.13s ease-out;
+        display: none;
       }
 
       #trash:hover {
@@ -115,6 +116,10 @@
         line-height: 50px;
         transition: all 0.13s ease-in;
         background-color: #e60c0c;
+      }
+
+      .mostra {
+        display: block !important;
       }
     </style>
   </head>
@@ -221,6 +226,7 @@
             console.log("começou o drag");
             e.dataTransfer.setData("text/plain", e.target.id); // Store the ID of the dragged element
             e.target.classList.add("dragging"); // Add a class for styling
+            document.getElementById("trash").classList.add("mostra");
           });
 
           draggableItems[i].addEventListener("click", (e) => {
@@ -230,6 +236,7 @@
           // Add dragend event listener to the draggable item
           draggableItems[i].addEventListener("dragend", (e) => {
             e.target.classList.remove("dragging"); // Remove dragging styling
+            document.getElementById("trash").classList.remove("mostra");
           });
         }
 
