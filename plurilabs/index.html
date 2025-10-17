@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>PluriLabs</title>
+    <meta property="og:title" content="PluriLabs" />
+    <meta name="generator" content="plataforma" />
+    <meta name="description" content="descrição" />
+    <meta property="og:description" content="descrição" />
+    <meta name="author" content="Guilherme Ranoya" />
+    <script src="https://datat.vercel.app/basicsmin.js"></script>
+
+    <style>
+      html,
+      body {
+        margin: 20px;
+      }
+
+      .dropz {
+        border: 1px solid black;
+      }
+
+      .nodrop {
+        align-self: center;
+        color: gray;
+        font-size: 12px;
+      }
+
+      .dragqueen {
+        min-width: 50px;
+        min-height: 50px;
+        max-width: 300px;
+        max-height: 300px;
+        margin: 14px;
+        border: 1px solid red;
+      }
+
+      .dragging {
+        background-color: red;
+      }
+
+      .dropz {
+        min-height: 40dvh;
+      }
+
+      #novo {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: gray;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+
+        z-index: 10;
+        box-shadow: 0 2px 5px #00000044;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.13s ease-out;
+      }
+
+      #novo:hover {
+        right: 25px;
+        width: 50px;
+        bottom: 25px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+        transition: all 0.13s ease-in;
+        background-color: #07553d;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div
+      id="matrizhorarios"
+      style="
+        display: grid;
+        grid-template-columns: auto repeat(5, 1fr);
+        gap: 10px 10px;
+      "
+    ></div>
+
+    <div id="novo">+</div>
+
+    <script>
+      const apresentainicial = function (dt) {
+        let code = `<div class="nodrop"></div>
+                    <div class="nodrop">Segunda</div>
+                    <div class="nodrop">Terça</div>
+                    <div class="nodrop">Quarta</div>
+                    <div class="nodrop">Quinta</div>
+                    <div class="nodrop">Sexta</div>
+                    <div class="nodrop">Manhã</div>`;
+
+        let momentos = [
+          "_segundaM",
+          "_tercaM",
+          "_quartaM",
+          "_quintaM",
+          "_sextaM",
+        ];
+
+        // Manhã
+        for (let m = 0; m < momentos.length; m++) {
+          code += `<div class="dropz">`;
+
+          let agendamentos = cfilter(dt, "matriz", momentos[m]);
+
+          for (let a = 0; a < agendamentos.length; a++) {
+            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true">${agendamentos[a].atividade}<br>${agendamentos[a].quem}</div>`;
+          }
+
+          code += `</div>`;
+        }
+
+        code += `<div class="nodrop">Tarde</div>`;
+
+        momentos = ["_segundaT", "_tercaT", "_quartaT", "_quintaT", "_sextaT"];
+
+        // Tarde
+        for (let m = 0; m < momentos.length; m++) {
+          code += `<div class="dropz">`;
+
+          let agendamentos = cfilter(dt, "matriz", momentos[m]);
+
+          for (let a = 0; a < agendamentos.length; a++) {
+            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true">${agendamentos[a].atividade}<br>${agendamentos[a].quem}</div>`;
+          }
+
+          code += `</div>`;
+        }
+
+        code += `</div>`;
+
+        document.getElementById("matrizhorarios").innerHTML = code;
+
+        // Draggable element
+        const draggableItems = document.getElementsByClassName("dragqueen");
+
+        // Drop zone
+        const dropZone = document.getElementsByClassName("dropz");
+
+        for (let i = 0; i < draggableItems.length; i++) {
+          // Add dragstart event listener to the draggable item
+          draggableItems[i].addEventListener("dragstart", (e) => {
+            console.log("começou o drag");
+            e.dataTransfer.setData("text/plain", e.target.id); // Store the ID of the dragged element
+            e.target.classList.add("dragging"); // Add a class for styling
+          });
+
+          draggableItems[i].addEventListener("click", (e) => {
+            console.log("clicou");
+          });
+
+          // Add dragend event listener to the draggable item
+          draggableItems[i].addEventListener("dragend", (e) => {
+            e.target.classList.remove("dragging"); // Remove dragging styling
+          });
+        }
+
+        for (let i = 0; i < dropZone.length; i++) {
+          // Add dragover event listener to the drop zone
+          dropZone[i].addEventListener("dragover", (e) => {
+            e.preventDefault(); // Prevent default to allow drop
+          });
+
+          // Add drop event listener to the drop zone
+          dropZone[i].addEventListener("drop", (e) => {
+            e.preventDefault();
+            const data = e.dataTransfer.getData("text/plain"); // Get the stored data
+            const draggedElement = document.getElementById(data);
+            dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
+          });
+        }
+
+        const trashZone = document.getElementById("novo");
+        trashZone.addEventListener("dragover", (e) => {
+          e.preventDefault(); // Prevent default to allow drop
+          trashZone.classList.add("cresce");
+        });
+        trashZone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          trashZone.classList.remove("cresce");
+          const data = e.dataTransfer.getData("text/plain"); // Get the stored data
+          const draggedElement = document.getElementById(data);
+        });
+      };
+    </script>
+  </body>
+</html>
