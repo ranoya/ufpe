@@ -104,7 +104,7 @@
       // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
       let servico =
         "https://script.google.com/macros/s/AKfycbw6kDbE4abPx-eAA7vvBFTkzO4A5R_fr0ChTXCJsRILBrdvZ08JApmgNLTToJ0qX9TG/exec" +
-        "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA&";
+        "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA";
 
       const apresentainicial = function (dt) {
         let code = `<div class="nodrop"></div>
@@ -204,7 +204,7 @@
 
             // Grava
 
-            let link = servico + "id=" + data + "p4=" + dropZone[i].id;
+            let link = servico + "&id=" + data + "&p4=" + dropZone[i].id;
 
             console.log(link);
 
