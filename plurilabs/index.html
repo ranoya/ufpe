@@ -204,7 +204,11 @@
 
             // Grava
 
-            fetch(servico + "id=" + data + "p4=" + dropZone[i].id)
+            let link = servico + "id=" + data + "p4=" + dropZone[i].id;
+
+            console.log(link);
+
+            fetch(link)
               .then((response) => {
                 if (!response.ok) {
                   throw new Error(`HTTP error! status: ${response.status}`);
