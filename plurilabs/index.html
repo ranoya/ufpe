@@ -54,6 +54,10 @@
         background-color: #ff000044;
       }
 
+      .estagio {
+        background-color: #64647b;
+      }
+
       .dropz {
         min-height: 40dvh;
       }
@@ -245,6 +249,11 @@
 
         for (let i = 0; i < draggableItems.length; i++) {
           // Add dragstart event listener to the draggable item
+
+          if (draggableItems[i].innerHTML.mach(/estág|estag/i)) {
+            draggableItems[i].classList.add("estagio");
+          }
+
           draggableItems[i].addEventListener("dragstart", (e) => {
             console.log("começou o drag");
             e.dataTransfer.setData("text/plain", e.target.id); // Store the ID of the dragged element
