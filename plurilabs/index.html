@@ -101,6 +101,11 @@
     <div id="novo">+</div>
 
     <script>
+      // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
+      let servico =
+        "https://script.google.com/macros/s/AKfycbw6kDbE4abPx-eAA7vvBFTkzO4A5R_fr0ChTXCJsRILBrdvZ08JApmgNLTToJ0qX9TG/exec" +
+        "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA&";
+
       const apresentainicial = function (dt) {
         let code = `<div class="nodrop"></div>
                     <div class="nodrop">Segunda</div>
@@ -195,6 +200,22 @@
             const draggedElement = document.getElementById(data);
             dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
             console.log("Elemento " + data + ", solto em " + dropZone[i].id);
+            dropZone[i].classList.remove("onhover");
+
+            // Grava
+
+            fetch(servico + "id=" + data + "p4=" + dropZone[i].id)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+              })
+              .then((textData) => {
+                console.log(textData);
+                // The content of your .txt file
+                // You can now manipulate 'textData' as needed
+              });
           });
         }
 
