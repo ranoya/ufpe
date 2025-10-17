@@ -19,14 +19,20 @@
     <script src="https://datat.vercel.app/basicsmin.js"></script>
 
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&&display=swap");
 
       html,
       body {
         margin: 20px;
-        font-family: "Source Serif 4", serif;
+        font-family: "Open Sans", sans-serif;
         font-optical-sizing: auto;
         font-style: normal;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        color: #c5e3e1;
       }
 
       .dropz {
@@ -34,13 +40,14 @@
       }
 
       .onhover {
-        background-color: #cccccc;
+        background-color: #5ad6e1;
       }
 
       .nodrop {
         align-self: center;
-        color: gray;
+        color: #759f9b;
         font-size: 12px;
+        text-align: center;
       }
 
       .dragqueen {
@@ -152,6 +159,17 @@
       .mostra {
         display: block !important;
       }
+
+      .pessoa {
+        font-weight: 200;
+        font-size: 14px;
+      }
+
+      .atv {
+        font-weight: bold;
+        font-size: 18px;
+        display: block;
+      }
     </style>
   </head>
 
@@ -222,7 +240,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true">${agendamentos[a].atividade}<br>${agendamentos[a].quem}</div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
           }
 
           code += `</div>`;
@@ -239,7 +257,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true">${agendamentos[a].atividade}<br>${agendamentos[a].quem}</div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
           }
 
           code += `</div>`;
