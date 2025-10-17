@@ -133,7 +133,7 @@
 
         // Tarde
         for (let m = 0; m < momentos.length; m++) {
-          code += `<div class="dropz">`;
+          code += `<div class="dropz" id="${momentos[m]}">`;
 
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
@@ -184,6 +184,7 @@
             const data = e.dataTransfer.getData("text/plain"); // Get the stored data
             const draggedElement = document.getElementById(data);
             dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
+            console.log("Elemento " + data + ", solto em " + dropZone[i].id);
           });
         }
 
