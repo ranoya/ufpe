@@ -118,6 +118,17 @@
         background-color: #e60c0c;
       }
 
+      .cresce {
+        right: 25px;
+        width: 50px;
+        bottom: 80px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+        transition: all 0.13s ease-in;
+        background-color: #e60c0c;
+      }
+
       .mostra {
         display: block !important;
       }
@@ -282,16 +293,43 @@
           });
         }
 
-        const trashZone = document.getElementById("novo");
+        // Lixo
+        const trashZone = document.getElementById("trash");
         trashZone.addEventListener("dragover", (e) => {
           e.preventDefault(); // Prevent default to allow drop
           trashZone.classList.add("cresce");
         });
+
+        trashZone.addEventListener("dragleave", (e) => {
+          e.preventDefault(); // Prevent default to allow drop
+          trashZone.classList.remove("cresce");
+        });
+
+        // Add drop event listener to the drop zone
         trashZone.addEventListener("drop", (e) => {
           e.preventDefault();
-          trashZone.classList.remove("cresce");
           const data = e.dataTransfer.getData("text/plain"); // Get the stored data
           const draggedElement = document.getElementById(data);
+          draggedElement.style.display = "none";
+          console.log("Elemento " + data + ", solto em " + trashZone.id);
+          trashZone.classList.remove("cresce");
+
+          // Grava
+
+          let link = servico + "&id=" + data + "remove=true";
+
+          fetch(link)
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+              }
+              return response.text();
+            })
+            .then((textData) => {
+              console.log(textData);
+              // The content of your .txt file
+              // You can now manipulate 'textData' as needed
+            });
         });
       };
 
