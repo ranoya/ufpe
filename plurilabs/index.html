@@ -85,6 +85,37 @@
         transition: all 0.13s ease-in;
         background-color: #07553d;
       }
+
+      #trash {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: #b34545;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+
+        z-index: 10;
+        box-shadow: 0 2px 5px #00000044;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.13s ease-out;
+      }
+
+      #trash:hover {
+        right: 25px;
+        width: 50px;
+        bottom: 95px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+        transition: all 0.13s ease-in;
+        background-color: #e60c0c;
+      }
     </style>
   </head>
 
@@ -98,12 +129,33 @@
       "
     ></div>
 
+    <div id="trash">
+      <svg
+        height="24"
+        viewBox="0 0 15 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.457 6.5L11.54 17.5H3.45996L2.54297 6.5H12.457Z"
+          stroke="white"
+        />
+        <path
+          d="M14 5V5.5H14.5V5H14ZM1 5H0.5V5.5H1V5ZM11.8457 3V3.5C12.1214 3.5 12.3589 3.50068 12.5752 3.52746C12.7886 3.55388 12.9457 3.60224 13.0636 3.67517C13.2553 3.7938 13.5 4.0797 13.5 5H14H14.5C14.5 3.9203 14.2061 3.2062 13.5898 2.82483C13.3037 2.64776 12.9895 2.57112 12.6981 2.53504C12.4095 2.49932 12.1084 2.5 11.8457 2.5V3ZM14 5V4.5H1V5V5.5H14V5ZM1 5H1.5C1.5 4.06603 1.73356 3.77855 1.90235 3.66603C2.12694 3.5163 2.45682 3.5 3 3.5V3V2.5C2.54318 2.5 1.87306 2.4837 1.34765 2.83397C0.766444 3.22145 0.5 3.93397 0.5 5H1ZM3 3V3.5H11.8457V3V2.5H3V3Z"
+          fill="white"
+        />
+        <path d="M5 8.5L5.5 16M10 8.5L9.5 16" stroke="white" />
+        <path d="M7.5 8.5V16" stroke="white" />
+        <path d="M7.5 1L6 3H9L7.5 1Z" stroke="white" />
+      </svg>
+    </div>
+
     <div id="novo">+</div>
 
     <script>
       // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
       let servico =
-        "https://script.google.com/macros/s/AKfycbw6kDbE4abPx-eAA7vvBFTkzO4A5R_fr0ChTXCJsRILBrdvZ08JApmgNLTToJ0qX9TG/exec" +
+        "https://script.google.com/macros/s/AKfycbz4DDmoFT9--QdsGhinI4vPQsv2usGnBTFG-1y4cV7GnkdCw2AosV_OhzRCZWW1Vn2a/exec" +
         "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA";
 
       const apresentainicial = function (dt) {
