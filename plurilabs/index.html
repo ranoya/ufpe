@@ -169,6 +169,18 @@
         font-weight: bold;
         font-size: 18px;
       }
+
+      .inp {
+        background-color: #d1ca83;
+      }
+
+      .cuida {
+        background-color: #c998af;
+      }
+
+      .outro {
+        background-color: #ada7aa;
+      }
     </style>
   </head>
 
@@ -255,7 +267,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
           }
 
           code += `</div>`;
@@ -272,7 +284,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
           }
 
           code += `</div>`;
