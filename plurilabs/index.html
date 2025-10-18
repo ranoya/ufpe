@@ -210,12 +210,28 @@
     <div id="novo">+</div>
 
     <script>
+      let labmatrix = [];
+
+      const labquery = function (idf, arr) {
+        let c = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].id == idf) {
+            break;
+          }
+          c++;
+        }
+
+        return c;
+      };
+
       // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
       let servico =
-        "https://script.google.com/macros/s/AKfycbz4DDmoFT9--QdsGhinI4vPQsv2usGnBTFG-1y4cV7GnkdCw2AosV_OhzRCZWW1Vn2a/exec" +
+        "https://script.google.com/macros/s/AKfycbwDtYQqO4snJYU43ruxgMvFeLalcGruAS8zlR7MhR7B0n8GuzxsFyULrqUGziuRHF3v/exec" +
         "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA";
 
       const apresentainicial = function (dt) {
+        labmatrix = dt;
+
         let code = `<div class="nodrop"></div>
                     <div class="nodrop">Segunda</div>
                     <div class="nodrop">Terça</div>
@@ -317,12 +333,11 @@
             dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
             console.log("Elemento " + data + ", solto em " + dropZone[i].id);
             dropZone[i].classList.remove("onhover");
+            labmatrix[labquery(data, labmatrix)].matriz = dropZone[i].id;
 
             // Grava
 
             let link = servico + "&id=" + data + "&p4=" + dropZone[i].id;
-
-            console.log(link);
 
             fetch(link)
               .then((response) => {
@@ -361,6 +376,7 @@
           draggedElement.style.display = "none";
           console.log("Elemento " + data + ", solto em " + trashZone.id);
           trashicon.classList.remove("cresce");
+          labmatrix.splice(labquery(data, labmatrix), 1);
 
           // Grava
 
