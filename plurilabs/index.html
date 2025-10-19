@@ -145,6 +145,37 @@
         background-color: #e60c0c;
       }
 
+      #botgrava {
+        position: fixed;
+        left: calc(50% + 145px);
+        top: calc(50dvh + 45px);
+        z-index: 102;
+        background-color: #44dcae;
+        box-shadow: 0 2px 5px #00000044;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 40px;
+        display: none;
+        transition: all 0.13s ease-out;
+      }
+
+      #botgrava:hover {
+        left: calc(50% + 140px);
+        top: calc(50dvh + 40px);
+
+        transition: all 0.13s ease-in;
+        background-color: #00ffb2;
+        border-radius: 8px;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+      }
+
       .cresce {
         right: 25px !important;
         width: 50px !important;
@@ -188,8 +219,7 @@
         height: 100dvh;
         top: 0;
         left: 0;
-        background-color: #888888;
-        filter: blur(5px);
+        background-color: #ffffff99;
         display: none;
         z-index: 90;
       }
@@ -197,15 +227,45 @@
       #modal {
         position: fixed;
         left: calc(50% - 200px);
-        top: calc(50dvh - 280px);
-        bottom: 90px;
+        top: calc(50dvh - 230px);
+
         padding: 16px;
         width: 400px;
-        height: 500px;
+        height: 325px;
         z-index: 100;
         background-color: #567e72;
         box-shadow: 0 2px 5px #00000044;
         border-radius: 8px;
+        overflow: hidden;
+        color: white;
+      }
+
+      #cabecalho {
+        background-color: #1a4035;
+        margin-left: -16px;
+        margin-top: -16px;
+        width: calc(100% + 32px);
+        height: 40px;
+        padding-top: 20px;
+        padding-left: 16px;
+        color: white;
+        font-weight: bolder;
+        margin-bottom: 20px;
+      }
+
+      input,
+      select {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        width: 70%;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 4px;
+        border: 0 none transparent;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 20px;
+        color: #0a4336;
       }
     </style>
   </head>
@@ -245,22 +305,39 @@
       </svg>
     </div>
 
-    <div id="modalblur">
-      <div id="modal">
-        <div id="cabecalho">Nova Atividade</div>
-        <div class="modallabel">Atividade</div>
-        <input id="ativ" type="text" />
-        <div class="modallabel">Responsável</div>
-        <input id="pessoa" type="text" />
-        <div class="horario">Alocação</div>
-        <select id="aloca">
-          <option value="_segundaM" selected>Segunda - Manhã</option>
-        </select>
-      </div>
+    <div id="botgrava">✓</div>
+
+    <div id="modal">
+      <div id="cabecalho">Nova Atividade</div>
+      <div class="modallabel">Atividade</div>
+      <input id="ativ" type="text" />
+      <div class="modallabel">Responsável</div>
+      <input id="pessoa" type="text" />
+      <div class="horario">Alocação</div>
+      <select id="aloca">
+        <option value="_segundaM" selected>Segunda - Manhã</option>
+      </select>
     </div>
+    <div id="modalblur" onclick="fechamodal()"></div>
     <div id="novo">+</div>
 
     <script>
+      modalvisible = false;
+
+      const fechamodal = function () {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("modalblur").style.display = "none";
+        document.getElementById("botgrava").style.display = "none";
+        modalvisible = false;
+      };
+
+      const ligamodal = function (dados) {
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("modalblur").style.display = "block";
+        document.getElementById("botgrava").style.display = "block";
+        modalvisible = true;
+      };
+
       let labmatrix = [];
 
       const labquery = function (idf, arr) {
