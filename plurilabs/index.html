@@ -339,7 +339,12 @@
       </select>
     </div>
     <div id="modalblur" onclick="fechamodal()"></div>
-    <div id="novo" onclick='ligamodal("Nova Atividade", ["",""])'>+</div>
+    <div
+      id="novo"
+      onclick='ligamodal("Nova Atividade", ["","","visse","_segundaM"])'
+    >
+      +
+    </div>
 
     <script>
       let modalvisible = false;
@@ -480,14 +485,16 @@
             let item = labmatrix[labquery(data, labmatrix)];
             card[0] = item.atividade;
             card[1] = item.quem;
-            card[2] = item.matriz;
-            card[3] = data;
+            card[2] = item.lab;
+            card[3] = item.matriz;
+            card[4] = data;
 
             ligamodal("Editando Atividade", [
               card[0],
               card[1],
               card[2],
               card[3],
+              card[4],
             ]);
           });
 
