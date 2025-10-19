@@ -464,8 +464,7 @@
           });
 
           draggableItems[i].addEventListener("click", (e) => {
-            e.preventDefault();
-            let data = e.target.id;
+            let data = e.target.id || e.target.parentNode.id;
             console.log(data + " clicou");
 
             let item = labmatrix[labquery(data, labmatrix)];
