@@ -161,6 +161,7 @@
         line-height: 40px;
         display: none;
         transition: all 0.13s ease-out;
+        cursor: pointer;
       }
 
       #botgrava:hover {
@@ -238,6 +239,7 @@
         border-radius: 8px;
         overflow: hidden;
         color: white;
+        display: none;
       }
 
       #cabecalho {
@@ -319,7 +321,7 @@
       </select>
     </div>
     <div id="modalblur" onclick="fechamodal()"></div>
-    <div id="novo">+</div>
+    <div id="novo" onclick='ligamodal("Nova Atividade", ["",""])'>+</div>
 
     <script>
       modalvisible = false;
@@ -331,10 +333,13 @@
         modalvisible = false;
       };
 
-      const ligamodal = function (dados) {
+      const ligamodal = function (label, dados) {
+        document.getElementById("cabecalho").innerHTML = label;
         document.getElementById("modal").style.display = "block";
         document.getElementById("modalblur").style.display = "block";
         document.getElementById("botgrava").style.display = "block";
+        document.getElementById("ativ").value = dados[0] || "";
+        document.getElementById("pessoa").value = dados[1] || "";
         modalvisible = true;
       };
 
