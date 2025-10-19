@@ -181,6 +181,19 @@
       .outro {
         background-color: #ada7aa;
       }
+
+      #modal {
+        position: fixed;
+        right: 90px;
+        bottom: 90px;
+        width: 400px;
+        height: 500px;
+        z-index: 100;
+        background-color: #567e72;
+        box-shadow: 0 2px 5px #00000044;
+        border-radius: 8px;
+        display: none;
+      }
     </style>
   </head>
 
@@ -219,6 +232,17 @@
       </svg>
     </div>
 
+    <div id="modal">
+      <div id="cabecalho">Nova Atividade</div>
+      <div class="modallabel">Atividade</div>
+      <input id="ativ" type="text" />
+      <div class="modallabel">Responsável</div>
+      <input id="pessoa" type="text" />
+      <div class="horario">Alocação</div>
+      <select id="aloca">
+        <option value="_segundaM" selected>Segunda - Manhã</option>
+      </select>
+    </div>
     <div id="novo">+</div>
 
     <script>
