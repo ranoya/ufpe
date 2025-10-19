@@ -324,7 +324,14 @@
     <div id="novo" onclick='ligamodal("Nova Atividade", ["",""])'>+</div>
 
     <script>
-      modalvisible = false;
+      let modalvisible = false;
+      let card = [
+        "Nova Atividade",
+        "",
+        "",
+        "_segundaM",
+        "_AT" + parseInt(Math.random() * 100),
+      ];
 
       const fechamodal = function () {
         document.getElementById("modal").style.display = "none";
@@ -340,6 +347,11 @@
         document.getElementById("botgrava").style.display = "block";
         document.getElementById("ativ").value = dados[0] || "";
         document.getElementById("pessoa").value = dados[1] || "";
+        card[0] = label;
+        card[1] = dados[0] || "";
+        card[2] = dados[2] || "";
+        card[3] = dados[3] || "_segundaM";
+        card[4] = dados[4] || "_AT" + parseInt(Math.random() * 100);
         modalvisible = true;
       };
 
@@ -436,7 +448,15 @@
           });
 
           draggableItems[i].addEventListener("click", (e) => {
-            console.log("clicou");
+            const data = e.target.id;
+            console.log(data + " clicou");
+            let item = labmatrix[labquery(data, labmatrix)];
+            card[0] = "Editando Atividade";
+            card[1] = item.atividade;
+            card[2] = item.quem;
+            card[3] = item.matriz;
+            card[4] = data;
+            ligamodal("Editando Atividade", card);
           });
 
           // Add dragend event listener to the draggable item
