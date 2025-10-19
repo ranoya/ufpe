@@ -586,7 +586,6 @@
         trashZone.addEventListener("dragover", (e) => {
           e.preventDefault(); // Prevent default to allow drop
           trashicon.classList.add("cresce");
-          console.log("tá no dragover do lixo");
         });
 
         trashZone.addEventListener("dragleave", (e) => {
@@ -607,6 +606,7 @@
           // Grava
 
           let link = servico + "&id=" + data + "&remover=true";
+          console.log(link);
 
           fetch(link)
             .then((response) => {
