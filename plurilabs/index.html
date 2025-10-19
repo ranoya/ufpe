@@ -307,7 +307,7 @@
       </svg>
     </div>
 
-    <div id="botgrava">✓</div>
+    <div id="botgrava" onclick="cria()">✓</div>
 
     <div id="modal">
       <div id="cabecalho">Nova Atividade</div>
@@ -348,14 +348,7 @@
 
     <script>
       let modalvisible = false;
-      let card = [
-        "Nova Atividade",
-        "",
-        "",
-        "visse",
-        "_segundaM",
-        "_AT" + parseInt(Math.random() * 100),
-      ];
+      let card = ["Nova Atividade", "", "", "visse", "_segundaM", "NADA"];
 
       const fechamodal = function () {
         document.getElementById("modal").style.display = "none";
@@ -376,7 +369,7 @@
         card[2] = dados[1] || "";
         card[3] = dados[2] || "visse";
         card[4] = dados[3] || "_segundaM";
-        card[5] = dados[4] || "_AT" + parseInt(Math.random() * 100);
+        card[5] = dados[4] || "NADA";
 
         modalvisible = true;
 
@@ -398,6 +391,48 @@
         }
 
         return c;
+      };
+
+      let cria = function () {
+        card[1] = document.getElementById("ativ").value;
+        card[2] = document.getElementById("pessoa").value;
+        card[3] = document.getElementById("lab").value;
+        card[4] = document.getElementById("aloca").value;
+        // card[5] não mexe;
+
+        if (card[5] == "NADA") {
+          card[5] = "";
+        }
+
+        let link =
+          servico +
+          "&id=" +
+          card[5] +
+          "&p2=" +
+          card[1] +
+          "&p3=" +
+          card[2] +
+          "&p3=" +
+          card[4] +
+          "&p4=" +
+          card[3];
+
+        fetch(link)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then((textData) => {
+            console.log(textData);
+            // The content of your .txt file
+            // You can now manipulate 'textData' as needed
+            gsdata(
+              "https://docs.google.com/spreadsheets/d/1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA/edit?gid=0#gid=0",
+              apresentainicial
+            );
+          });
       };
 
       // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
