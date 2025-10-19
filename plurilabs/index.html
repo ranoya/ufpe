@@ -182,17 +182,30 @@
         background-color: #ada7aa;
       }
 
+      #modalblur {
+        position: fixed;
+        width: 100%;
+        height: 100dvh;
+        top: 0;
+        left: 0;
+        background-color: #888888;
+        filter: blur(5px);
+        display: none;
+        z-index: 90;
+      }
+
       #modal {
         position: fixed;
-        right: 90px;
+        left: calc(50% - 200px);
+        top: calc(50dvh - 280px);
         bottom: 90px;
+        padding: 16px;
         width: 400px;
         height: 500px;
         z-index: 100;
         background-color: #567e72;
         box-shadow: 0 2px 5px #00000044;
         border-radius: 8px;
-        display: none;
       }
     </style>
   </head>
@@ -232,16 +245,18 @@
       </svg>
     </div>
 
-    <div id="modal">
-      <div id="cabecalho">Nova Atividade</div>
-      <div class="modallabel">Atividade</div>
-      <input id="ativ" type="text" />
-      <div class="modallabel">Responsável</div>
-      <input id="pessoa" type="text" />
-      <div class="horario">Alocação</div>
-      <select id="aloca">
-        <option value="_segundaM" selected>Segunda - Manhã</option>
-      </select>
+    <div id="modalblur">
+      <div id="modal">
+        <div id="cabecalho">Nova Atividade</div>
+        <div class="modallabel">Atividade</div>
+        <input id="ativ" type="text" />
+        <div class="modallabel">Responsável</div>
+        <input id="pessoa" type="text" />
+        <div class="horario">Alocação</div>
+        <select id="aloca">
+          <option value="_segundaM" selected>Segunda - Manhã</option>
+        </select>
+      </div>
     </div>
     <div id="novo">+</div>
 
