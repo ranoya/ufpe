@@ -318,6 +318,16 @@
       <div class="horario">Alocação</div>
       <select id="aloca">
         <option value="_segundaM" selected>Segunda - Manhã</option>
+        <option value="_segundaT">Segunda - Tarde</option>
+        <option value="_segundaT">Segunda - Tarde</option>
+        <option value="_tercaM">Terça - Manhã</option>
+        <option value="_tercaT">Terça - Tarde</option>
+        <option value="_quartaM">Quarta - Manhã</option>
+        <option value="_quartaT">Quarta - Tarde</option>
+        <option value="_quintaM">Quinta - Manhã</option>
+        <option value="_quintaT">Quinta - Tarde</option>
+        <option value="_sextaM">Sexta - Manhã</option>
+        <option value="_sextaT">Sexta - Tarde</option>
       </select>
     </div>
     <div id="modalblur" onclick="fechamodal()"></div>
@@ -349,10 +359,13 @@
         document.getElementById("pessoa").value = dados[1] || "";
         card[0] = label;
         card[1] = dados[0] || "";
-        card[2] = dados[2] || "";
-        card[3] = dados[3] || "_segundaM";
-        card[4] = dados[4] || "_AT" + parseInt(Math.random() * 100);
+        card[2] = dados[1] || "";
+        card[3] = dados[2] || "_segundaM";
+        card[4] = dados[3] || "_AT" + parseInt(Math.random() * 100);
         modalvisible = true;
+        document.getElementById("aloca").value = card[3];
+        document.getElementById("ativ").value = card[1];
+        document.getElementById("pessoa").value = card[2];
       };
 
       let labmatrix = [];
@@ -451,11 +464,10 @@
             const data = e.target.id;
             console.log(data + " clicou");
             let item = labmatrix[labquery(data, labmatrix)];
-            card[0] = "Editando Atividade";
-            card[1] = item.atividade;
-            card[2] = item.quem;
-            card[3] = item.matriz;
-            card[4] = data;
+            card[0] = item.atividade;
+            card[1] = item.quem;
+            card[2] = item.matriz;
+            card[3] = data;
             ligamodal("Editando Atividade", card);
           });
 
