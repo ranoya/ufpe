@@ -400,10 +400,6 @@
         card[4] = document.getElementById("aloca").value;
         // card[5] não mexe;
 
-        if (card[5] == "NADA") {
-          card[5] = "";
-        }
-
         let link =
           servico +
           "&id=" +
@@ -412,9 +408,9 @@
           card[1] +
           "&p3=" +
           card[2] +
-          "&p3=" +
-          card[4] +
           "&p4=" +
+          card[4] +
+          "&p5=" +
           card[3];
 
         console.log(link);
