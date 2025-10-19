@@ -464,15 +464,16 @@
           });
 
           draggableItems[i].addEventListener("click", (e) => {
-            const data = e.target.id;
+            let data = e.target.id;
             console.log(data + " clicou");
+
             let item = labmatrix[labquery(data, labmatrix)];
             card[0] = item.atividade;
             card[1] = item.quem;
             card[2] = item.matriz;
             card[3] = data;
-            console.log("dados para o modal no click:");
-            console.table(card);
+            //console.log("dados para o modal no click:");
+            //console.table(card);
             ligamodal("Editando Atividade", [
               card[0],
               card[1],
@@ -503,7 +504,7 @@
           // Add drop event listener to the drop zone
           dropZone[i].addEventListener("drop", (e) => {
             e.preventDefault();
-            const data = e.dataTransfer.getData("text/plain"); // Get the stored data
+            let data = e.dataTransfer.getData("text/plain"); // Get the stored data
             const draggedElement = document.getElementById(data);
             dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
             console.log("Elemento " + data + ", solto em " + dropZone[i].id);
@@ -546,7 +547,7 @@
         // Add drop event listener to the drop zone
         trashZone.addEventListener("drop", (e) => {
           e.preventDefault();
-          const data = e.dataTransfer.getData("text/plain"); // Get the stored data
+          let data = e.dataTransfer.getData("text/plain"); // Get the stored data
           const draggedElement = document.getElementById(data);
           draggedElement.style.display = "none";
           console.log("Elemento " + data + ", solto em " + trashZone.id);
