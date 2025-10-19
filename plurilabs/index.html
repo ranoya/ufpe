@@ -347,6 +347,7 @@
     </div>
 
     <script>
+      let apagando = false;
       let modalvisible = false;
       let card = ["Nova Atividade", "", "", "visse", "_segundaM", "NADA"];
 
@@ -414,7 +415,7 @@
           "&p5=" +
           card[3];
 
-        console.log(link);
+        //console.log(link);
 
         fetch(link)
           .then((response) => {
@@ -506,7 +507,7 @@
           }
 
           draggableItems[i].addEventListener("dragstart", (e) => {
-            console.log("começou o drag");
+            // console.log("começou o drag");
             e.dataTransfer.setData("text/plain", e.target.id); // Store the ID of the dragged element
             e.target.classList.add("dragging"); // Add a class for styling
             document.getElementById("trash").classList.add("mostra");
@@ -514,7 +515,7 @@
 
           draggableItems[i].addEventListener("click", (e) => {
             let data = e.target.id || e.target.parentNode.id;
-            console.log(data + " clicou");
+            // console.log(data + " clicou");
 
             let item = labmatrix[labquery(data, labmatrix)];
             card[0] = item.atividade;
@@ -557,7 +558,7 @@
             let data = e.dataTransfer.getData("text/plain"); // Get the stored data
             const draggedElement = document.getElementById(data);
             dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
-            console.log("Elemento " + data + ", solto em " + dropZone[i].id);
+            // console.log("Elemento " + data + ", solto em " + dropZone[i].id);
             dropZone[i].classList.remove("onhover");
             labmatrix[labquery(data, labmatrix)].matriz = dropZone[i].id;
 
@@ -596,30 +597,36 @@
         // Add drop event listener to the drop zone
         trashZone.addEventListener("drop", (e) => {
           e.preventDefault();
-          let data = e.dataTransfer.getData("text/plain"); // Get the stored data
-          const draggedElement = document.getElementById(data);
-          draggedElement.style.display = "none";
-          console.log("Elemento " + data + ", solto em " + trashZone.id);
-          trashicon.classList.remove("cresce");
-          labmatrix.splice(labquery(data, labmatrix), 1);
+          if (!apagando) {
+            apagando = true;
 
-          // Grava
+            let data = e.dataTransfer.getData("text/plain"); // Get the stored data
+            const draggedElement = document.getElementById(data);
+            draggedElement.style.display = "none";
+            // console.log("Elemento " + data + ", solto em " + trashZone.id);
+            trashicon.classList.remove("cresce");
+            labmatrix.splice(labquery(data, labmatrix), 1);
 
-          let link = servico + "&id=" + data + "&remover=true";
-          console.log(link);
+            // Grava
 
-          fetch(link)
-            .then((response) => {
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              return response.text();
-            })
-            .then((textData) => {
-              console.log(textData);
-              // The content of your .txt file
-              // You can now manipulate 'textData' as needed
-            });
+            let link = servico + "&id=" + data + "&remover=true";
+            // console.log(link);
+
+            fetch(link)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                  apagando = false;
+                }
+                return response.text();
+              })
+              .then((textData) => {
+                console.log(textData);
+                // The content of your .txt file
+                // You can now manipulate 'textData' as needed
+                apagando = false;
+              });
+          }
         });
       };
 
