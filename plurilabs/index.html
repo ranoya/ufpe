@@ -464,6 +464,7 @@
           });
 
           draggableItems[i].addEventListener("click", (e) => {
+            e.preventDefault();
             let data = e.target.id;
             console.log(data + " clicou");
 
