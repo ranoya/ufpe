@@ -322,7 +322,7 @@
         <option value="cuida">Cuida</option>
         <option value="outro">Outros</option>
       </select>
-    </div>
+
       <div class="horario">Alocação</div>
       <select id="aloca">
         <option value="_segundaM" selected>Segunda - Manhã</option>
@@ -347,7 +347,7 @@
         "Nova Atividade",
         "",
         "",
-        "visse", 
+        "visse",
         "_segundaM",
         "_AT" + parseInt(Math.random() * 100),
       ];
@@ -373,9 +373,8 @@
         card[4] = dados[3] || "_segundaM";
         card[5] = dados[4] || "_AT" + parseInt(Math.random() * 100);
 
-
         modalvisible = true;
-        
+
         document.getElementById("ativ").value = card[1];
         document.getElementById("pessoa").value = card[2];
         document.getElementById("lab").value = card[3];
