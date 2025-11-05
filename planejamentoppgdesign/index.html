@@ -451,9 +451,6 @@
 
         modalvisible = true;
 
-        console.table(dados);
-        console.table(card);
-
         document.getElementById("ativ").value = card[1];
         document.getElementById("pessoa").value = card[2];
         document.getElementById("tipo").value = card[3];
@@ -560,7 +557,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab} ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
           }
 
           code += `</div>`;
@@ -620,8 +617,6 @@
             card[5] = item.ch;
             card[6] = item.matriz;
             card[7] = data;
-
-            console.log("ID: " + card[7]);
 
             ligamodal("Editando Atividade", [
               card[1],
