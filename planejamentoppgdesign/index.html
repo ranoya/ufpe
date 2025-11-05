@@ -41,6 +41,7 @@
       .dropz {
         background-color: #ffffff;
         border-left: 1px dashed #eeeeee;
+        border-right: 1px dashed #eeeeee;
       }
 
       .onhover {
@@ -74,6 +75,7 @@
         padding: 8px;
         box-shadow: 10px 10px #eb690c88;
         margin-bottom: 20px;
+        margin-right: 25px;
       }
 
       .dragging {
@@ -591,7 +593,10 @@
           code += `</div>`;
         }
 
-        code += `</div>`;
+        code += `<div></div>
+                    <div style="grid-column: 2 / Span 5; border-bottom: 1px solid black; height: 4px; margin-bottom: 4px;"></div>
+                    
+                 </div>`;
 
         document.getElementById("matrizhorarios").innerHTML = code;
 
