@@ -569,7 +569,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].ch} | ${agendamentos[a].formato}</span></div>`;
           }
 
           code += `</div>`;
@@ -588,7 +588,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].ch} | ${agendamentos[a].formato}</span></div>`;
           }
 
           code += `</div>`;
