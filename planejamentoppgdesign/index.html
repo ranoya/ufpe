@@ -52,6 +52,11 @@
         color: #759f9b;
         font-size: 12px;
         text-align: center;
+        text-align: center;
+        font-family: Helvetica, Arial, Sans-serif;
+        font-size: 11px;
+        color: #888888;
+        text-transform: uppercase;
       }
 
       .dragqueen {
@@ -550,6 +555,8 @@
           "_sextaM",
         ];
 
+        code += `<div></div><div style="grid-column: 2 / Span 6; border-bottom: 1px solid black; height: 4px; margin-bottom: 4px;></div>`;
+
         // Manhã
         for (let m = 0; m < momentos.length; m++) {
           code += `<div class="dropz" id="${momentos[m]}">`;
@@ -557,11 +564,13 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab} ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
           }
 
           code += `</div>`;
         }
+
+        code += `<div></div><div style="grid-column: 2 / Span 6; border-bottom: 1px solid black; height: 4px; margin-bottom: 4px;></div>`;
 
         code += `<div class="nodrop">Tarde</div>`;
 
