@@ -428,7 +428,7 @@
         card[4] = dados[3] || "Híbrido";
         card[5] = dados[4] || "60h";
         card[6] = dados[5] || "_segundaM";
-        card[7] = dados[6] || "NADA";
+        card[7] = dados[0] || "NADA";
 
         modalvisible = true;
 
@@ -601,6 +601,8 @@
             card[5] = item.ch;
             card[6] = item.matriz;
             card[7] = data;
+
+            console.log("ID: " + card[7]);
 
             ligamodal("Editando Atividade", [
               card[1],
