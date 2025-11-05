@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>PPGDesign</title>
+    <meta property="og:title" content="PPGDesign" />
+    <meta name="generator" content="plataforma" />
+    <meta name="description" content="Planejamento de Grade de Disciplinas" />
+    <meta
+      property="og:description"
+      content="Planejamento de Grade de Disciplinas"
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <script src="https://datat.vercel.app/basicsmin.js"></script>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&&display=swap");
+
+      html,
+      body {
+        margin: 20px;
+        font-family: "Open Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+
+      h1 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 800;
+        color: #c5e3e1;
+      }
+
+      .dropz {
+        background-color: #eeeeee;
+      }
+
+      .onhover {
+        background-color: #5ad6e1;
+      }
+
+      .nodrop {
+        align-self: center;
+        color: #759f9b;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .dragqueen {
+        min-width: 50px;
+        min-height: 50px;
+        max-width: 300px;
+        max-height: 300px;
+        margin: 14px;
+        background-color: #8383d1;
+        padding: 10px;
+        border-radius: 4px;
+        color: white;
+      }
+
+      .dragging {
+        background-color: #ff000044;
+      }
+
+      .estagio {
+        background-color: #64647b;
+      }
+
+      .dropz {
+        min-height: 30dvh;
+      }
+
+      #novo {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: gray;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+
+        z-index: 10;
+        box-shadow: 0 2px 5px #00000044;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.13s ease-out;
+      }
+
+      #novo:hover {
+        right: 25px;
+        width: 50px;
+        bottom: 25px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+        transition: all 0.13s ease-in;
+        background-color: #07553d;
+      }
+
+      #trashdropzone {
+        position: absolute;
+        width: 100%;
+        background-color: #00000000;
+        height: 100%;
+        z-index: 11;
+      }
+
+      #trash {
+        position: fixed;
+        bottom: 85px;
+        right: 30px;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        background-color: #b34545;
+        color: white;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 24px;
+
+        z-index: 10;
+        box-shadow: 0 2px 5px #00000044;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+        transition: all 0.13s ease-out;
+        display: none;
+      }
+
+      #trash:hover {
+        right: 25px;
+        width: 50px;
+        bottom: 80px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+        transition: all 0.13s ease-in;
+        background-color: #e60c0c;
+      }
+
+      #botgrava {
+        position: fixed;
+        left: calc(50% + 145px);
+        top: calc(50dvh + 115px);
+        z-index: 102;
+        background-color: #44dcae;
+        box-shadow: 0 2px 5px #00000044;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        text-align: center;
+        line-height: 40px;
+        display: none;
+        transition: all 0.13s ease-out;
+        cursor: pointer;
+      }
+
+      #botgrava:hover {
+        left: calc(50% + 140px);
+        top: calc(50dvh + 110px);
+
+        transition: all 0.13s ease-in;
+        background-color: #00ffb2;
+        border-radius: 8px;
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+        line-height: 50px;
+      }
+
+      .cresce {
+        right: 25px !important;
+        width: 50px !important;
+        bottom: 80px !important;
+        height: 50px !important;
+        border-radius: 25px !important;
+        line-height: 50px !important;
+        transition: all 0.13s ease-in;
+        background-color: #e60c0c !important;
+      }
+
+      .mostra {
+        display: block !important;
+      }
+
+      .pessoa {
+        font-weight: 200;
+        font-size: 14px;
+      }
+
+      .atv {
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .inp {
+        background-color: #d1ca83;
+      }
+
+      .cuida {
+        background-color: #c998af;
+      }
+
+      .outro {
+        background-color: #ada7aa;
+      }
+
+      #modalblur {
+        position: fixed;
+        width: 100%;
+        height: 100dvh;
+        top: 0;
+        left: 0;
+        background-color: #ffffff99;
+        display: none;
+        z-index: 90;
+      }
+
+      #modal {
+        position: fixed;
+        left: calc(50% - 200px);
+        top: calc(50dvh - 240px);
+
+        padding: 16px;
+        width: 400px;
+        height: 415px;
+        z-index: 100;
+        background-color: #567e72;
+        box-shadow: 0 2px 5px #00000044;
+        border-radius: 8px;
+        overflow: hidden;
+        color: white;
+        display: none;
+      }
+
+      #cabecalho {
+        background-color: #1a4035;
+        margin-left: -16px;
+        margin-top: -16px;
+        width: calc(100% + 32px);
+        height: 40px;
+        padding-top: 20px;
+        padding-left: 16px;
+        color: white;
+        font-weight: bolder;
+        margin-bottom: 20px;
+      }
+
+      input,
+      select {
+        margin-top: 8px;
+        margin-bottom: 16px;
+        width: 70%;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 4px;
+        border: 0 none transparent;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 20px;
+        color: #0a4336;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Planejamento da Grade de Disciplinas</h1>
+    <br />
+
+    <div
+      id="matrizhorarios"
+      style="
+        display: grid;
+        grid-template-columns: auto repeat(5, 1fr);
+        gap: 10px 10px;
+      "
+    ></div>
+
+    <div id="trash">
+      <div id="trashdropzone"></div>
+      <svg
+        style="margin-top: 9px; height: 20px"
+        viewBox="0 0 15 18"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.457 6.5L11.54 17.5H3.45996L2.54297 6.5H12.457Z"
+          stroke="white"
+        />
+        <path
+          d="M14 5V5.5H14.5V5H14ZM1 5H0.5V5.5H1V5ZM11.8457 3V3.5C12.1214 3.5 12.3589 3.50068 12.5752 3.52746C12.7886 3.55388 12.9457 3.60224 13.0636 3.67517C13.2553 3.7938 13.5 4.0797 13.5 5H14H14.5C14.5 3.9203 14.2061 3.2062 13.5898 2.82483C13.3037 2.64776 12.9895 2.57112 12.6981 2.53504C12.4095 2.49932 12.1084 2.5 11.8457 2.5V3ZM14 5V4.5H1V5V5.5H14V5ZM1 5H1.5C1.5 4.06603 1.73356 3.77855 1.90235 3.66603C2.12694 3.5163 2.45682 3.5 3 3.5V3V2.5C2.54318 2.5 1.87306 2.4837 1.34765 2.83397C0.766444 3.22145 0.5 3.93397 0.5 5H1ZM3 3V3.5H11.8457V3V2.5H3V3Z"
+          fill="white"
+        />
+        <path d="M5 8.5L5.5 16M10 8.5L9.5 16" stroke="white" />
+        <path d="M7.5 8.5V16" stroke="white" />
+        <path d="M7.5 1L6 3H9L7.5 1Z" stroke="white" />
+      </svg>
+    </div>
+
+    <div id="botgrava" onclick="cria()">✓</div>
+
+    <div id="modal">
+      <div id="cabecalho">Modificação</div>
+      <div class="modallabel">Título</div>
+      <input id="ativ" type="text" />
+      <div class="modallabel">Responsável</div>
+      <select id="pessoa" type="text">
+        <option value="Adailton Laporte">Adailton Laporte</option>
+        <option value="Alana Fontes da Gama">Alana Fontes da Gama</option>
+        <option value="Amilton Arruda">Amilton Arruda</option>
+        <option value="Ana Carolina Barbosa">Ana Carolina Barbosa</option>
+        <option value="Ana Videla">Ana Videla</option>
+        <option value="André Neves">André Neves</option>
+        <option value="Andréa Camargo">Andréa Camargo</option>
+        <option value="Auta Laurentino">Auta Laurentino</option>
+        <option value="Eva Rolim Miranda">Eva Rolim Miranda</option>
+        <option value="Flora Assumpção">Flora Assumpção</option>
+        <option value="Gentil Porto Filho">Gentil Porto Filho</option>
+        <option value="Germannya DGarcia">Germannya DGarcia</option>
+        <option value="Guilherme Ranoya">Guilherme Ranoya</option>
+        <option value="Hans Waechter">Hans Waechter</option>
+        <option value="Isabella Aragão">Isabella Aragão</option>
+        <option value="João Marcelo Teixeira">João Marcelo Teixeira</option>
+        <option value="Kátia Araújo">Kátia Araújo</option>
+        <option value="Laura Bezerra Martins">Laura Bezerra Martins</option>
+        <option value="Leonardo Castillo">Leonardo Castillo</option>
+        <option value="Letícia Teixeira Mendes">Letícia Teixeira Mendes</option>
+        <option value="Lourival Costa Filho">Lourival Costa Filho</option>
+        <option value="Marcelo Soares">Marcelo Soares</option>
+        <option value="Maria Alice Rocha">Maria Alice Rocha</option>
+        <option value="Maria Cristina Ibarra">Maria Cristina Ibarra</option>
+        <option value="Ney Dantas">Ney Dantas</option>
+        <option value="Oriana Duarte de Araújo">Oriana Duarte de Araújo</option>
+        <option value="Pedro Aléssio">Pedro Aléssio</option>
+        <option value="Renata Cadena">Renata Cadena</option>
+        <option value="Ricardo Cunha Lima">Ricardo Cunha Lima</option>
+        <option value="Rosiane Pereira Alves">Rosiane Pereira Alves</option>
+        <option value="Simone Barros">Simone Barros</option>
+        <option value="Solange Coutinho">Solange Coutinho</option>
+        <option value="Virgínia Cavalcanti">Virgínia Cavalcanti</option>
+        <option value="Walter Franklin">Walter Franklin</option>
+      </select>
+      <div class="horario">Tipo</div>
+      <select id="tipo">
+        <option value="Disciplina" selected>Disciplina</option>
+        <option value="Orientação">Orientação</option>
+      </select>
+
+      <div class="horario">Formato</div>
+      <select id="formato">
+        <option value="Híbrido" selected>Híbrido</option>
+        <option value="Presencial">Presencial</option>
+      </select>
+
+      <div class="horario">Carga Horária</div>
+      <select id="ch">
+        <option value="60h" selected>60h</option>
+        <option value="45h">45h</option>
+        <option value="30h">30h</option>
+        <option value="15h">15h</option>
+      </select>
+
+      <div class="horario">Alocação</div>
+      <select id="aloca">
+        <option value="_segundaM" selected>Segunda - Manhã</option>
+        <option value="_segundaT">Segunda - Tarde</option>
+        <option value="_segundaT">Segunda - Tarde</option>
+        <option value="_tercaM">Terça - Manhã</option>
+        <option value="_tercaT">Terça - Tarde</option>
+        <option value="_quartaM">Quarta - Manhã</option>
+        <option value="_quartaT">Quarta - Tarde</option>
+        <option value="_quintaM">Quinta - Manhã</option>
+        <option value="_quintaT">Quinta - Tarde</option>
+        <option value="_sextaM">Sexta - Manhã</option>
+        <option value="_sextaT">Sexta - Tarde</option>
+      </select>
+    </div>
+    <div id="modalblur" onclick="fechamodal()"></div>
+    <div
+      id="novo"
+      onclick='ligamodal("Inclusão", ["","","Disciplina", "Híbrido", "60h", "_segundaM"])'
+    >
+      +
+    </div>
+
+    <script>
+      let apagando = false;
+      let modalvisible = false;
+      let card = [
+        "Inclusão",
+        "",
+        "",
+        "Disciplina",
+        "Híbrido",
+        "60h",
+        "_segundaM",
+        "NADA",
+      ];
+
+      const fechamodal = function () {
+        document.getElementById("modal").style.display = "none";
+        document.getElementById("modalblur").style.display = "none";
+        document.getElementById("botgrava").style.display = "none";
+        modalvisible = false;
+      };
+
+      const ligamodal = function (label, dados) {
+        document.getElementById("cabecalho").innerHTML = label;
+        document.getElementById("modal").style.display = "block";
+        document.getElementById("modalblur").style.display = "block";
+        document.getElementById("botgrava").style.display = "block";
+        card[0] = label;
+        card[1] = dados[0] || "";
+        card[2] = dados[1] || "";
+        card[3] = dados[2] || "Disciplina";
+        card[4] = dados[3] || "Híbrido";
+        card[5] = dados[5] || "60h";
+        card[6] = dados[6] || "_segundaM";
+        card[7] = dados[7] || "NADA";
+
+        modalvisible = true;
+
+        document.getElementById("ativ").value = card[1];
+        document.getElementById("pessoa").value = card[2];
+        document.getElementById("tipo").value = card[3];
+        document.getElementById("formato").value = card[4];
+        document.getElementById("ch").value = card[5];
+        document.getElementById("aloca").value = card[6];
+      };
+
+      let labmatrix = [];
+
+      const labquery = function (idf, arr) {
+        let c = 0;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i].id == idf) {
+            break;
+          }
+          c++;
+        }
+
+        return c;
+      };
+
+      let cria = function () {
+        fechamodal();
+        card[1] = document.getElementById("ativ").value;
+        card[2] = document.getElementById("pessoa").value;
+        card[3] = document.getElementById("tipo").value;
+        card[4] = document.getElementById("formato").value;
+        card[5] = document.getElementById("ch").value;
+        card[6] = document.getElementById("aloca").value;
+        // card[5] não mexe;
+
+        let link =
+          servico +
+          "&id=" +
+          card[7] +
+          "&p2=" +
+          card[1] +
+          "&p3=" +
+          card[2] +
+          "&p4=" +
+          card[6] +
+          "&p5=" +
+          card[3] +
+          "&p6=" +
+          card[4] +
+          "&p7=" +
+          card[5];
+
+        //console.log(link);
+
+        fetch(link)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+          })
+          .then((textData) => {
+            console.log(textData);
+            // The content of your .txt file
+            // You can now manipulate 'textData' as needed
+            gsdata(
+              "https://docs.google.com/spreadsheets/d/1_73Xnnz6mu3g5VA00p4XWKcCKZuyoI6RnjzBzcyxT3w/edit?gid=0#gid=0",
+              apresentainicial
+            );
+          });
+      };
+
+      // serviço de gravação no Sheets (atualizar link conforme o Script é atualizado)
+      /* Versão Antiga
+      let servico =
+        "https://script.google.com/macros/s/AKfycbwDtYQqO4snJYU43ruxgMvFeLalcGruAS8zlR7MhR7B0n8GuzxsFyULrqUGziuRHF3v/exec" +
+        "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA";
+      */
+
+      let servico =
+        "https://script.google.com/macros/s/AKfycbzDISkPyVLzAFMx59jToAWOYVg4LyrU4Xk1jxJomji755l0-VpI-zKCJvB7n3F-ln86/exec" +
+        "?planilha=1nTRipglhYAIXH8_CXS9lepaGPSv_b33AEm0-UNIIODA";
+
+      const apresentainicial = function (dt) {
+        labmatrix = dt;
+
+        let code = `<div class="nodrop"></div>
+                    <div class="nodrop">Segunda</div>
+                    <div class="nodrop">Terça</div>
+                    <div class="nodrop">Quarta</div>
+                    <div class="nodrop">Quinta</div>
+                    <div class="nodrop">Sexta</div>
+                    <div class="nodrop">Manhã</div>`;
+
+        let momentos = [
+          "_segundaM",
+          "_tercaM",
+          "_quartaM",
+          "_quintaM",
+          "_sextaM",
+        ];
+
+        // Manhã
+        for (let m = 0; m < momentos.length; m++) {
+          code += `<div class="dropz" id="${momentos[m]}">`;
+
+          let agendamentos = cfilter(dt, "matriz", momentos[m]);
+
+          for (let a = 0; a < agendamentos.length; a++) {
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+          }
+
+          code += `</div>`;
+        }
+
+        code += `<div class="nodrop">Tarde</div>`;
+
+        momentos = ["_segundaT", "_tercaT", "_quartaT", "_quintaT", "_sextaT"];
+
+        // Tarde
+        for (let m = 0; m < momentos.length; m++) {
+          code += `<div class="dropz" id="${momentos[m]}">`;
+
+          let agendamentos = cfilter(dt, "matriz", momentos[m]);
+
+          for (let a = 0; a < agendamentos.length; a++) {
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+          }
+
+          code += `</div>`;
+        }
+
+        code += `</div>`;
+
+        document.getElementById("matrizhorarios").innerHTML = code;
+
+        // Draggable element
+        const draggableItems = document.getElementsByClassName("dragqueen");
+
+        // Drop zone
+        const dropZone = document.getElementsByClassName("dropz");
+
+        for (let i = 0; i < draggableItems.length; i++) {
+          // Add dragstart event listener to the draggable item
+
+          if (draggableItems[i].innerHTML.match(/estág|estag/i)) {
+            draggableItems[i].classList.add("estagio");
+          }
+
+          draggableItems[i].addEventListener("dragstart", (e) => {
+            // console.log("começou o drag");
+            e.dataTransfer.setData("text/plain", e.target.id); // Store the ID of the dragged element
+            e.target.classList.add("dragging"); // Add a class for styling
+            document.getElementById("trash").classList.add("mostra");
+          });
+
+          draggableItems[i].addEventListener("click", (e) => {
+            let data = e.target.id || e.target.parentNode.id;
+            // console.log(data + " clicou");
+
+            let item = labmatrix[labquery(data, labmatrix)];
+            card[0] = item.atividade;
+            card[1] = item.quem;
+            card[2] = item.tipo;
+            card[3] = item.formato;
+            card[4] = item.ch;
+            card[5] = item.matriz;
+            card[6] = data;
+
+            ligamodal("Editando Atividade", [
+              card[0],
+              card[1],
+              card[2],
+              card[3],
+              card[4],
+              card[5],
+            ]);
+          });
+
+          // Add dragend event listener to the draggable item
+          draggableItems[i].addEventListener("dragend", (e) => {
+            e.target.classList.remove("dragging"); // Remove dragging styling
+            document.getElementById("trash").classList.remove("mostra");
+          });
+        }
+
+        for (let i = 0; i < dropZone.length; i++) {
+          // Add dragover event listener to the drop zone
+          dropZone[i].addEventListener("dragover", (e) => {
+            e.preventDefault(); // Prevent default to allow drop
+            dropZone[i].classList.add("onhover");
+          });
+
+          dropZone[i].addEventListener("dragleave", (e) => {
+            e.preventDefault(); // Prevent default to allow drop
+            dropZone[i].classList.remove("onhover");
+          });
+
+          // Add drop event listener to the drop zone
+          dropZone[i].addEventListener("drop", (e) => {
+            e.preventDefault();
+            let data = e.dataTransfer.getData("text/plain"); // Get the stored data
+            const draggedElement = document.getElementById(data);
+            dropZone[i].appendChild(draggedElement); // Move the element to the drop zone
+            // console.log("Elemento " + data + ", solto em " + dropZone[i].id);
+            dropZone[i].classList.remove("onhover");
+            labmatrix[labquery(data, labmatrix)].matriz = dropZone[i].id;
+
+            // Grava
+
+            let link = servico + "&id=" + data + "&p4=" + dropZone[i].id;
+
+            fetch(link)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+              })
+              .then((textData) => {
+                console.log(textData);
+                // The content of your .txt file
+                // You can now manipulate 'textData' as needed
+              });
+          });
+        }
+
+        // Lixo
+        const trashicon = document.getElementById("trash");
+        const trashZone = document.getElementById("trashdropzone");
+        trashZone.addEventListener("dragover", (e) => {
+          e.preventDefault(); // Prevent default to allow drop
+          trashicon.classList.add("cresce");
+        });
+
+        trashZone.addEventListener("dragleave", (e) => {
+          e.preventDefault(); // Prevent default to allow drop
+          trashicon.classList.remove("cresce");
+        });
+
+        // Add drop event listener to the drop zone
+        trashZone.addEventListener("drop", (e) => {
+          e.preventDefault();
+          if (!apagando) {
+            apagando = true;
+
+            let data = e.dataTransfer.getData("text/plain"); // Get the stored data
+            const draggedElement = document.getElementById(data);
+            draggedElement.style.display = "none";
+            // console.log("Elemento " + data + ", solto em " + trashZone.id);
+            trashicon.classList.remove("cresce");
+            labmatrix.splice(labquery(data, labmatrix), 1);
+
+            // Grava
+
+            let link = servico + "&id=" + data + "&remover=true";
+            // console.log(link);
+
+            fetch(link)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error(`HTTP error! status: ${response.status}`);
+                  apagando = false;
+                }
+                return response.text();
+              })
+              .then((textData) => {
+                console.log(textData);
+                // The content of your .txt file
+                // You can now manipulate 'textData' as needed
+                apagando = false;
+              });
+          }
+        });
+      };
+
+      // carrega dados
+
+      gsdata(
+        "https://docs.google.com/spreadsheets/d/1_73Xnnz6mu3g5VA00p4XWKcCKZuyoI6RnjzBzcyxT3w/edit?gid=0#gid=0",
+        apresentainicial
+      );
+    </script>
+  </body>
+</html>
