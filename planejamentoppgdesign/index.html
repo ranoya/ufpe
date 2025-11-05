@@ -39,7 +39,8 @@
       }
 
       .dropz {
-        background-color: #eeeeee;
+        background-color: #ffffff;
+        border-left: 1px dashed #eeeeee;
       }
 
       .onhover {
@@ -59,10 +60,12 @@
         max-width: 300px;
         max-height: 300px;
         margin: 14px;
-        background-color: #8383d1;
+        background-color: white;
         padding: 10px;
-        border-radius: 4px;
-        color: white;
+        color: black;
+        border: 1px solid black;
+        padding: 8px;
+        box-shadow: 10px 10px #eb690c88;
       }
 
       .dragging {
@@ -558,7 +561,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].lab}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
           }
 
           code += `</div>`;
