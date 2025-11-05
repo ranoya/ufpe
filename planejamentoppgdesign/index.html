@@ -220,6 +220,22 @@
         background-color: #ada7aa;
       }
 
+      .Orientação {
+        box-shadow: 10px 10px #eb690c36;
+        border: 1px solid #b9b9b9;
+        color: #555555;
+        background-color: #f4f4f4;
+      }
+
+      .ch30h {
+        background-color: #dddddd;
+      }
+
+      .Presencial {
+        background-color: #444444;
+        color: white;
+      }
+
       #modalblur {
         position: fixed;
         width: 100%;
@@ -561,7 +577,7 @@
           let agendamentos = cfilter(dt, "matriz", momentos[m]);
 
           for (let a = 0; a < agendamentos.length; a++) {
-            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
+            code += `<div id="${agendamentos[a].id}" class="dragqueen ${agendamentos[a].tipo} t${agendamentos[a].ch} ${agendamentos[a].formato}" draggable="true"><span class="atv">${agendamentos[a].atividade}</span><br><span class="pessoa">${agendamentos[a].quem}<br>${agendamentos[a].tipo}<br>${agendamentos[a].formato}<br>${agendamentos[a].ch}</span></div>`;
           }
 
           code += `</div>`;
