@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Documentos</title>
+    <meta property="og:title" content="Documentos" />
+    <meta name="generator" content="Google Forms" />
+    <meta name="description" content="Documentos dos Estudantes" />
+    <meta property="og:description" content="Documentos dos Estudantes" />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta property="og:url" content="https://ufpe.vercel.app/alunosdocs" />
+    <meta property="og:type" content="interface" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Documentos dos Estudantes" />
+    <meta name="application-name" content="Documentos dos Estudantes" />
+
+    <script src="https://datat.vercel.app/basicsmin.js"></script>
+
+    <style>
+      * {
+        border: 0;
+        padding: 0;
+        margin: 0;
+      }
+
+      body,
+      html {
+        margin: 40px 40px 40px 40px;
+        background-color: white;
+        color: gray;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+      }
+
+      a {
+        color: rgb(82, 127, 226);
+      }
+    </style>
+  </head>
+
+  <body>
+    <input
+      type="text"
+      id="filtra"
+      placeholder="Filtrar..."
+      style="width: 300px; height: 30px; font-size: 16px; margin-bottom: 20px"
+    />
+
+    <div id="lista"></div>
+
+    <script>
+      omnifilter = function (arr) {
+        let alunos = unique(arr, "Aluno");
+
+        console.table(alunos);
+      };
+
+      omnifilterfetchcsvdata(
+        GoogleSheetCsvURL(
+          "https://docs.google.com/spreadsheets/d/1z-tTRAQ0sr3s2antFnizwY83H1L8esjCgLeGEFak73g/edit?resourcekey=&gid=279175707#gid=279175707"
+        ),
+        "filtra"
+      );
+    </script>
+  </body>
+</html>
