@@ -70,7 +70,7 @@
         for (let i = 0; i < alunos.length - 1; i++) {
           for (let a = 0; a < arr.length; a++) {
             if (alunos[i] == arr[a].Aluno) {
-              code += `<div>alunos[i]</div>`;
+              code += `<div>${alunos[i]}</div><div>${arr[a].Nivel}</div><div>${arr[a].Entrada}</div><div>${arr[a].Orientador}</div><div>${arr[a].Email}</div><div>${arr[a].Prorrogacoes}</div>`;
               break;
             }
           }
