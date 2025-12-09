@@ -62,6 +62,19 @@
         margin-top: 5px;
         margin-bottom: 5px;
       }
+
+      .icone {
+        width: 20px;
+        height: 20px;
+      }
+
+      .icone path {
+        fill: grey;
+      }
+
+      .icone:hover path {
+        fill: rgb(82, 127, 226);
+      }
     </style>
   </head>
 
@@ -86,9 +99,51 @@
           if (alunos[i] != "#N/A") {
             for (let a = 0; a < arr.length; a++) {
               if (alunos[i] == arr[a].Aluno) {
-                code += `<div>${alunos[i]}</div><div>${arr[a].Acoes}</div><div>${arr[a].Trancamentos}</div><div>${arr[a].Prorrogacoes}</div><div>${arr[a].Bolsas}</div><div>${arr[a].Nivel}</div><div>${arr[a].Entrada}</div><div>${arr[a].Orientador}</div><div>${arr[a].Email}</div><div></div><div></div><div></div><div></div>
-                
+                code += `<div>${alunos[i]}</div><div>${arr[a].Acoes}</div><div>${arr[a].Trancamentos}</div><div>${arr[a].Prorrogacoes}</div><div>${arr[a].Bolsas}</div><div>${arr[a].Nivel}</div><div>${arr[a].Entrada}</div><div>${arr[a].Orientador}</div><div>${arr[a].Email}</div>`;
+
+                if (
+                  typeof arr[a].Economica != "undefined" &&
+                  arr[a].Economica != "" &&
+                  (arr[a].Economica != "undefined") != null
+                ) {
+                  code += `<div><a target="_blank" href="${arr[a].Economica}"><svg class="icoe" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6.77419L12.3077 0H0V28H20V6.77419Z"/></svg></a></div>`;
+                } else {
+                  code += `<div></div>`;
+                }
+
+                if (
+                  typeof arr[a].Emocional != "undefined" &&
+                  arr[a].Emocional != "" &&
+                  (arr[a].Emocional != "undefined") != null
+                ) {
+                  code += `<div><a target="_blank" href="${arr[a].Emocional}"><svg class="icoe" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6.77419L12.3077 0H0V28H20V6.77419Z"/></svg></a></div>`;
+                } else {
+                  code += `<div></div>`;
+                }
+
+                if (
+                  typeof arr[a].Pcd != "undefined" &&
+                  arr[a].Pcd != "" &&
+                  (arr[a].Pcd != "undefined") != null
+                ) {
+                  code += `<div><a target="_blank" href="${arr[a].Pcd}"><svg class="icoe" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6.77419L12.3077 0H0V28H20V6.77419Z"/></svg></a></div>`;
+                } else {
+                  code += `<div></div>`;
+                }
+
+                if (
+                  typeof arr[a].Cuidadores != "undefined" &&
+                  arr[a].Cuidadores != "" &&
+                  (arr[a].Cuidadores != "undefined") != null
+                ) {
+                  code += `<div><a target="_blank" href="${arr[a].Cuidadores}"><svg class="icoe" viewBox="0 0 20 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 6.77419L12.3077 0H0V28H20V6.77419Z"/></svg></a></div>`;
+                } else {
+                  code += `<div></div>`;
+                }
+
+                code += `                
                 <div class="linha"></div>`;
+
                 break;
               }
             }
