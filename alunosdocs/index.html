@@ -43,6 +43,12 @@
       a {
         color: rgb(82, 127, 226);
       }
+
+      #lista {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        gap: 10px 10px;
+      }
     </style>
   </head>
 
@@ -59,7 +65,18 @@
     <script>
       omnifilter = function (arr) {
         let alunos = unique(arr, "Aluno");
+        let code = "";
 
+        for (let i = 0; i < alunos.length - 1; i++) {
+          for (let a = 0; a < arr.length; a++) {
+            if (alunos[i] == arr[a].Aluno) {
+              code += `<div>alunos[i]</div>`;
+              break;
+            }
+          }
+        }
+
+        document.getElementById("lista").innerHTML = code;
         console.table(alunos);
       };
 
