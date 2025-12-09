@@ -50,9 +50,25 @@
         gap: 10px 20px;
       }
 
+      input {
+        padding-left: 20px;
+        padding-right: 20px;
+        outline: 0;
+        width: 300px;
+        height: 30px;
+        font-size: 16px;
+        margin-bottom: 50px;
+      }
+
+      input:focus {
+        outline: 0;
+        border-bottom: 1px dashed #d1d1d1;
+      }
+
       .head {
         font-size: 12px;
         text-transform: uppercase;
+        color: #d1d1d1;
       }
 
       .linha {
@@ -79,12 +95,7 @@
   </head>
 
   <body>
-    <input
-      type="text"
-      id="filtra"
-      placeholder="Filtrar..."
-      style="width: 300px; height: 30px; font-size: 16px; margin-bottom: 20px"
-    />
+    <input type="text" id="filtra" placeholder="Filtrar..." />
 
     <div id="lista"></div>
 
