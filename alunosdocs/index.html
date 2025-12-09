@@ -46,8 +46,13 @@
 
       #lista {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 280px 100px 100px 1fr 100px 60px 1fr 1fr 50px 50px 50px 50px;
         gap: 10px 10px;
+      }
+
+      .head {
+        font-size: 12px;
+        text-transform: uppercase;
       }
     </style>
   </head>
@@ -65,13 +70,15 @@
     <script>
       omnifilter = function (arr) {
         let alunos = unique(arr, "Aluno");
-        let code = "";
+        let code = `<div class="head">ALUNO</div><div class="head">AF</div><div class="head">TRANC.</div><div class="head">PRORR.</div><div class="head">BOLSAS</div><div class="head">NÍVEL</div><div class="head">ENTRADA</div><div class="head">ORIENTADOR</div><div class="head">EMAIL</div><div class="head">ECON.</div><div class="head">PSIQ.</div><div class="head">PcD</div><div class="head">CUIDAD.</div>`;
 
-        for (let i = 0; i < alunos.length - 1; i++) {
-          for (let a = 0; a < arr.length; a++) {
-            if (alunos[i] == arr[a].Aluno) {
-              code += `<div>${alunos[i]}</div><div>${arr[a].Nivel}</div><div>${arr[a].Entrada}</div><div>${arr[a].Orientador}</div><div>${arr[a].Email}</div><div>${arr[a].Prorrogacoes}</div>`;
-              break;
+        for (let i = 0; i < alunos.length; i++) {
+          if (alunos[i] != "#N/A") {
+            for (let a = 0; a < arr.length; a++) {
+              if (alunos[i] == arr[a].Aluno) {
+                code += `<div>${alunos[i]}</div><div>${arr[a].Acoes}</div><div>${arr[a].Trancamentos}</div><div>${arr[a].Prorrogacoes}</div><div>${arr[a].Bolsas}</div><div>${arr[a].Nivel}</div><div>${arr[a].Nivel}</div><div>${arr[a].Nivel}</div><div>${arr[a].Nivel}</div><div>${arr[a].Nivel}</div><div>${arr[a].Entrada}</div><div>${arr[a].Orientador}</div><div>${arr[a].Email}</div><div></div><div></div><div></div><div></div>`;
+                break;
+              }
             }
           }
         }
