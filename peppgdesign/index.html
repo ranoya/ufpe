@@ -44,6 +44,8 @@
         margin: 40px;
         margin-bottom: 80px;
         text-align: center;
+        margin-left: max(40px, calc(50% - 630px));
+        margin-right: max(40px, calc(50% - 630px));
       }
 
       #timeline {
@@ -79,6 +81,31 @@
         padding-bottom: 40px;
         font-size: 18px;
         line-height: 24px;
+      }
+
+      .b2 {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        gap: 15px 15px;
+        padding-left: 15px;
+        border-left: 7px solid black;
+      }
+
+      .b2 div:nth-child(1),
+      .b2 div:nth-child(3),
+      .b2 div:nth-child(5),
+      .b2 div:nth-child(7),
+      .b2 div:nth-child(9),
+      .b2 div:nth-child(11),
+      .b2 div:nth-child(13),
+      .b2 div:nth-child(15),
+      .b2 div:nth-child(17),
+      .b2 div:nth-child(19),
+      .b2 div:nth-child(21),
+      .b2 div:nth-child(23),
+      .b2 div:nth-child(25) {
+        background-color: black;
+        color: white;
       }
     </style>
   </head>
