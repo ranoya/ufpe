@@ -57,12 +57,13 @@
         display: grid;
         grid-template-columns: 1fr 1.5fr 2fr !important;
         gap: 20px 30px;
+        gap: 10px 10px !important;
       }
 
       .slidelinelvv_track1,
       .slidelinelvv_track2,
       .slidelinelvv_track3 {
-        box-shadow: 12px 0px 16px 0px #00000024;
+        box-shadow: 20px 15px 20px 0px #00000017;
       }
 
       .slidelinelvv_track1_cont {
@@ -101,6 +102,8 @@
         gap: 15px 15px;
         padding-left: 15px;
         border-left: 1px dashed #dddddd;
+        padding-right: 45px;
+        padding-top: 20px;
       }
 
       .slidelinelvv_track2_cont .b2,
@@ -108,6 +111,8 @@
         display: grid;
         grid-template-columns: 40px 1fr;
         gap: 15px 15px;
+        padding-right: 25px;
+        padding-top: 20px;
       }
 
       .b2 div:nth-child(1),
@@ -151,7 +156,26 @@
   </head>
 
   <body>
+    <div id="titulo"></div>
+    <div id="textopre"></div>
     <div id="timeline"></div>
+    <div id="textopos"></div>
+
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/@ranoya/planejamentoestrategico_ppgdesign.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "titulo")
+          return new Inspector(document.querySelector("#titulo"));
+        if (name === "texto")
+          return new Inspector(document.querySelector("#textopre"));
+        if (name === "pospipg")
+          return new Inspector(document.querySelector("#textopos"));
+      });
+    </script>
 
     <script>
       let populatimeline = function (d) {
