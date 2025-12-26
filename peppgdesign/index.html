@@ -43,7 +43,6 @@
       body {
         margin: 40px;
         margin-bottom: 80px;
-        text-align: center;
         margin-left: max(40px, calc(50% - 630px));
         margin-right: max(40px, calc(50% - 630px));
       }
@@ -78,17 +77,30 @@
       .slidelinelvv_track3_cont {
         width: 100%;
         align-self: self-start;
-        padding-bottom: 40px;
+        padding-bottom: 70px;
         font-size: 18px;
         line-height: 24px;
       }
 
-      .b2 {
+      .slidelinelvv_track3_cont b {
+        font-style: italic;
+        display: block;
+        margin-bottom: -10px;
+      }
+
+      .slidelinelvv_track3_cont .b2 {
         display: grid;
-        grid-template-columns: 50px 1fr;
+        grid-template-columns: 40px 1fr;
         gap: 15px 15px;
         padding-left: 15px;
-        border-left: 7px solid black;
+        border-left: 1px dashed #dddddd;
+      }
+
+      .slidelinelvv_track2_cont .b2,
+      .slidelinelvv_track1_cont .b2 {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 15px 15px;
       }
 
       .b2 div:nth-child(1),
@@ -106,6 +118,11 @@
       .b2 div:nth-child(25) {
         background-color: black;
         color: white;
+        justify-items: start;
+        align-self: start;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 12px;
       }
     </style>
   </head>
