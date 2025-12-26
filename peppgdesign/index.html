@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8' />
+        <meta name ='pinterest' content ='nopin' />
+        <meta name='pinterest' content='nohover' />
+        <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+        <meta name='keywords' content='' />
+        <title>Planejamento Estratégico</title>
+        <meta property='og:title' content='Planejamento Estratégico' />
+        <meta name='generator' content='artesanal' />
+        <meta name='description' content='Diagnóstico do Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029.' />
+        <meta property='og:description' content='Diagnóstico do Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029.' />
+        <meta name='author' content='Guilherme Ranoya' />
+        <meta property='og:url' content='https://ufpe.vercel.app/peppgdesign' />
+        <meta property='og:type' content='website' />
+        <meta property='og:locale' content='pt_BR' />
+        <meta property='og:image:width' content='600' />
+        <meta property='og:image:height' content='600' />
+        <meta property='og:site_name' content='Planejamento Estratégico' />
+        <meta name='application-name' content='Planejamento Estratégico' />
+
+        <script src="https://datat.vercel.app/basicsmin.js"></script>
+        <script src="https://slidelines.vercel.app/slideslvmin.js"></script>
+
+        <style>
+             <style>
+      #timeline {
+        grid-template-columns: 1fr !important;
+      }
+
+      .slidelinelvv {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 200px 300px 1fr !important;
+        gap: 10px 10px;
+      }
+
+      .slidelinelvv_track1_cont {
+        top: 190px !important;
+        font-size: 30px;
+        font-weight: bolder;
+      }
+
+      .slidelinelvv_track2_cont {
+        top: 190px !important;
+        font-size: 30px;
+      }
+
+      .slidelinelvv_track3_cont {
+        width: 100%;
+      }
+    </style>
+        </style>
+    </head>
+    
+    <body>
+
+        <div id="timeline"></div>
+
+    <script>
+        let populatimeline = function (d) {
+        slidelvv("timeline", d, "Eixos", "Objetivos", "Situação", true);
+      };
+
+      gsdata(
+        "https://docs.google.com/spreadsheets/d/1tjmcRwo4mLUYKrlitWA1c41T8iWebQcpBjEw77Y5LpU/edit?gid=779964386#gid=779964386",
+        populatimeline
+      );
+    </script>
+    </body>
+</html>
