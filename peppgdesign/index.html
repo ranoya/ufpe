@@ -41,23 +41,28 @@
       .slidelinelvv {
         width: 100%;
         display: grid;
-        grid-template-columns: 200px 300px 1fr !important;
-        gap: 10px 10px;
+        grid-template-columns: 1fr 1.5fr 2fr !important;
+        gap: 20px 20px;
       }
 
       .slidelinelvv_track1_cont {
         top: 190px !important;
-        font-size: 30px;
+        font-size: 24px;
         font-weight: bolder;
+        align-self: self-start;
       }
 
       .slidelinelvv_track2_cont {
         top: 190px !important;
-        font-size: 30px;
+        font-size: 20px;
+        line-height: 22px;
+        margin-bottom: 15px;
+        align-self: self-start;
       }
 
       .slidelinelvv_track3_cont {
         width: 100%;
+        align-self: self-start;
       }
     </style>
   </head>
@@ -67,7 +72,7 @@
 
     <script>
       let populatimeline = function (d) {
-        slidelvv("timeline", d, "Eixos", "Objetivos", "Situação", true);
+        slidelvv("timeline", d, "Eixos", "Objetivos", "Situacao", true);
       };
 
       gsdata(
