@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Orientandos do PPGDesign</title>
+    <meta property="og:title" content="Orientandos do PPGDesign" />
+    <meta name="generator" content="artesanal" />
+    <meta name="description" content="Orientandos e egressos do programa." />
+    <meta
+      property="og:description"
+      content="Orientandos e egressos do programa."
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta
+      property="og:url"
+      content="https://ufpe.vercel.app/orientandosppgdesign"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="Orientandos do PPGDesign" />
+    <meta name="application-name" content="Orientandos do PPGDesign" />
+
+    <style>
+      html {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      body {
+        margin: 40px;
+        margin-bottom: 80px;
+      }
+
+      #filtroclosed {
+        display: none;
+      }
+
+      #filtroopen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: calc(100% - 80px);
+        padding-left: 40px;
+        padding-top: 40px;
+        padding-right: 40px;
+        background-color: white;
+        height: 30px;
+        padding-bottom: 20px;
+        z-index: 1;
+      }
+
+      #tabela {
+        position: fixed;
+        z-index: 1;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        height: calc(100dvh - 130px);
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="filtroopen"></div>
+    <div id="filtroclosed"></div>
+    <div id="tabela"></div>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+    />
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/d/949c4b6f22b940f7@433.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "viewof filtros")
+          return new Inspector(document.querySelector("#filtroopen"));
+        if (name === "viewof shadowfiltros")
+          return new Inspector(document.querySelector("#filtroclosed"));
+        if (name === "tab")
+          return new Inspector(document.querySelector("#tabela"));
+        return ["semestres", "viewof dados", "orientadores", "botoes"].includes(
+          name
+        );
+      });
+    </script>
+  </body>
+</html>
