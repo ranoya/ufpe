@@ -46,12 +46,13 @@
 
   <body>
     <div id="observablehq-botoesprogramas"></div>
-    <div id="observablehq-viewof-filtros-a3856ea4"></div>
+    <div id="observablehq-viewof-filtros-a3856ea4" style="display: none"></div>
     <div
       id="observablehq-viewof-shadowfiltros-a3856ea4"
       style="display: none"
     ></div>
     <div id="observablehq-viewof-shadowprograma" style="display: none"></div>
+    <div id="observablehq-viewof-filtramesmo" style="display: none"></div>
     <br /><br />
     <div id="observablehq-semestres-a3856ea4"></div>
     <div id="observablehq-botoes-a3856ea4"></div>
@@ -83,6 +84,11 @@
       if (name === "viewof shadowprograma")
         return new Inspector(
           document.querySelector("#observablehq-viewof-shadowprograma")
+        );
+
+      if (name === "viewof filtramesmo")
+        return new Inspector(
+          document.querySelector("#observablehq-viewof-filtramesmo")
         );
 
       if (name === "semestres")
