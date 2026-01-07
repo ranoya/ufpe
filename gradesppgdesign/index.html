@@ -41,6 +41,7 @@
       id="observablehq-viewof-shadowfiltros-a3856ea4"
       style="display: none"
     ></div>
+    <div id="observablehq-viewof-shadowprograma" style="display: none"></div>
     <br /><br />
     <div id="observablehq-semestres-a3856ea4"></div>
     <div id="observablehq-botoes-a3856ea4"></div>
@@ -68,6 +69,12 @@
         return new Inspector(
           document.querySelector("#observablehq-viewof-shadowfiltros-a3856ea4")
         );
+
+      if (name === "viewof shadowprograma")
+        return new Inspector(
+          document.querySelector("#observablehq-viewof-shadowprograma")
+        );
+
       if (name === "semestres")
         return new Inspector(
           document.querySelector("#observablehq-semestres-a3856ea4")
@@ -116,6 +123,22 @@
           inpt.dispatchEvent(new Event("input", { bubbles: true }));
         } else {
           clearInterval(muda);
+        }
+      }, 100);
+    }
+
+    if (
+      typeof $_GET["programa"] == "undefined" ||
+      $_GET["programa"] == null ||
+      $_GET["programa"] == ""
+    ) {
+      let mudaprog = setInterval(() => {
+        let inpt = document.getElementsByTagName("input")[2];
+        if (inpt.value != "PPGDesign") {
+          inpt.value = "PPGDesign";
+          inpt.dispatchEvent(new Event("input", { bubbles: true }));
+        } else {
+          clearInterval(mudaprog);
         }
       }, 100);
     }
