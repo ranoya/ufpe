@@ -66,7 +66,7 @@
         top: 90px;
         left: 0;
         width: 100%;
-        height: calc(100dvh - 130px);
+        height: calc(100dvh - 90px);
         overflow-x: hidden;
         overflow-y: auto;
       }
@@ -87,7 +87,7 @@
         Runtime,
         Inspector,
       } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-      import define from "https://api.observablehq.com/d/949c4b6f22b940f7@433.js?v=4";
+      import define from "https://api.observablehq.com/@ranoya/estudantes-ppgdesign-ufpe.js?v=4";
       new Runtime().module(define, (name) => {
         if (name === "viewof filtros")
           return new Inspector(document.querySelector("#filtroopen"));
