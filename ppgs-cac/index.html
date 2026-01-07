@@ -45,6 +45,7 @@
   </head>
 
   <body>
+    <div id="observablehq-botoesprogramas"></div>
     <div id="observablehq-viewof-filtros-a3856ea4"></div>
     <div
       id="observablehq-viewof-shadowfiltros-a3856ea4"
@@ -92,6 +93,13 @@
         return new Inspector(
           document.querySelector("#observablehq-botoes-a3856ea4")
         );
+
+      if (name === "botoesprogramas")
+        return new Inspector(
+          document.querySelector("#observablehq-botoesprogramas")
+        );
+
+      botoesprogramas;
       if (name === "viz")
         return new Inspector(
           document.querySelector("#observablehq-viz-a3856ea4")
