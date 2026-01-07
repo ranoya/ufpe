@@ -155,6 +155,9 @@
           inpt.dispatchEvent(new Event("input", { bubbles: true }));
         } else {
           clearInterval(mudaprog);
+          document.getElementById(
+            "observablehq-botoesprogramas"
+          ).style.display = "none";
         }
       }, 100);
     }
