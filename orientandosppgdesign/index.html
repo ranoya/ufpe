@@ -76,6 +76,7 @@
   <body>
     <div id="filtroopen"></div>
     <div id="filtroclosed"></div>
+    <div id="egg"></div>
     <div id="tabela"></div>
 
     <link
@@ -93,6 +94,8 @@
           return new Inspector(document.querySelector("#filtroopen"));
         if (name === "viewof shadowfiltros")
           return new Inspector(document.querySelector("#filtroclosed"));
+        if (name === "viewof egressos")
+          return new Inspector(document.querySelector("#egg"));
         if (name === "tab")
           return new Inspector(document.querySelector("#tabela"));
         return ["semestres", "viewof dados", "orientadores", "botoes"].includes(
