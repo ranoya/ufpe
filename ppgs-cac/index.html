@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Disciplinas de Pós-Graduação - CAC</title>
+    <meta property="og:title" content="Disciplinas de Pós-Graduação - CAC" />
+    <meta name="generator" content="static" />
+    <meta
+      name="description"
+      content="Visualização de disciplinas de Pós-Praduação - CAC"
+    />
+    <meta
+      property="og:description"
+      content="Visualização de disciplinas de Pós-Graduação - CAC"
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta property="og:url" content="https://ufpe.vercel.app/ppgs-cac" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta
+      property="og:site_name"
+      content="Disciplinas de Pós-Graduação - CAC"
+    />
+    <meta
+      name="application-name"
+      content="Disciplinas de Pós-Graduação - CAC"
+    />
+
+    <style>
+      body {
+        margin: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="observablehq-viewof-filtros-a3856ea4"></div>
+    <div
+      id="observablehq-viewof-shadowfiltros-a3856ea4"
+      style="display: none"
+    ></div>
+    <div id="observablehq-viewof-shadowprograma" style="display: none"></div>
+    <br /><br />
+    <div id="observablehq-semestres-a3856ea4"></div>
+    <div id="observablehq-botoes-a3856ea4"></div>
+    <br /><br />
+    <div id="observablehq-viz-a3856ea4"></div>
+    <div id="observablehq-estaile-a3856ea4"></div>
+  </body>
+
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@observablehq/inspector@5/dist/inspector.css"
+  />
+  <script type="module">
+    import {
+      Runtime,
+      Inspector,
+    } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+    import define from "https://api.observablehq.com/@ranoya/grade-ppgdesign.js?v=4";
+    new Runtime().module(define, (name) => {
+      if (name === "viewof filtros")
+        return new Inspector(
+          document.querySelector("#observablehq-viewof-filtros-a3856ea4")
+        );
+      if (name === "viewof shadowfiltros")
+        return new Inspector(
+          document.querySelector("#observablehq-viewof-shadowfiltros-a3856ea4")
+        );
+
+      if (name === "viewof shadowprograma")
+        return new Inspector(
+          document.querySelector("#observablehq-viewof-shadowprograma")
+        );
+
+      if (name === "semestres")
+        return new Inspector(
+          document.querySelector("#observablehq-semestres-a3856ea4")
+        );
+      if (name === "botoes")
+        return new Inspector(
+          document.querySelector("#observablehq-botoes-a3856ea4")
+        );
+      if (name === "viz")
+        return new Inspector(
+          document.querySelector("#observablehq-viz-a3856ea4")
+        );
+      if (name === "estaile")
+        return new Inspector(
+          document.querySelector("#observablehq-estaile-a3856ea4")
+        );
+      return ["viewof grade", "periodos"].includes(name);
+    });
+  </script>
+
+  <script>
+    $_GET = [];
+    (function () {
+      corte = window.location.href.toString().indexOf("?");
+      if (corte > 0) {
+        argumento = window.location.href.toString().substring(corte + 1);
+        argumentos = argumento.split("&");
+        for (arg in argumentos) {
+          let argCorte = argumentos[arg].indexOf("=");
+          $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[
+            arg
+          ].substring(argCorte + 1);
+        }
+      }
+    })();
+
+    if (
+      typeof $_GET["filtra"] != "undefined" &&
+      $_GET["filtra"] != null &&
+      $_GET["filtra"] != ""
+    ) {
+      let muda = setInterval(() => {
+        let inpt = document.getElementsByTagName("input")[0];
+        if (inpt.value != decodeURIComponent($_GET["filtra"])) {
+          inpt.value = decodeURIComponent($_GET["filtra"]);
+          inpt.dispatchEvent(new Event("input", { bubbles: true }));
+        } else {
+          clearInterval(muda);
+        }
+      }, 100);
+    }
+
+    if (
+      typeof $_GET["programa"] != "undefined" &&
+      $_GET["programa"] != null &&
+      $_GET["programa"] != ""
+    ) {
+      let mudaprog = setInterval(() => {
+        let inpt = document.getElementsByTagName("input")[2];
+        if (inpt.value != decodeURIComponent($_GET["programa"])) {
+          inpt.value = decodeURIComponent($_GET["programa"]);
+          inpt.dispatchEvent(new Event("input", { bubbles: true }));
+        } else {
+          clearInterval(mudaprog);
+        }
+      }, 100);
+    }
+  </script>
+</html>
