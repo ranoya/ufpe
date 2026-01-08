@@ -197,5 +197,23 @@
         populatimeline
       );
     </script>
+
+    <script>
+      if (
+        typeof $_GET["ano"] != "undefined" &&
+        $_GET["ano"] != null &&
+        $_GET["ano"] != ""
+      ) {
+        let mudaprog = setInterval(() => {
+          let inpt = document.getElementsByTagName("input")[0];
+          if (inpt.value != decodeURIComponent($_GET["ano"])) {
+            inpt.value = decodeURIComponent($_GET["ano"]);
+            inpt.dispatchEvent(new Event("input", { bubbles: true }));
+          } else {
+            clearInterval(mudaprog);
+          }
+        }, 100);
+      }
+    </script>
   </body>
 </html>
