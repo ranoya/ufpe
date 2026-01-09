@@ -168,6 +168,9 @@
   <body>
     <div id="titulo"></div>
     <div id="ano" style="display: none"></div>
+    <div id="ordenaA" style="display: none"></div>
+    <div id="ordenaB" style="display: none"></div>
+    <div id="ordenaC" style="display: none"></div>
     <div id="textopos"></div>
 
     <script type="module">
@@ -181,6 +184,12 @@
           return new Inspector(document.querySelector("#titulo"));
         if (name === "viewof anorelatorio")
           return new Inspector(document.querySelector("#ano"));
+        if (name === "viewof ordenaA")
+          return new Inspector(document.querySelector("#ordenaA"));
+        if (name === "viewof ordenaB")
+          return new Inspector(document.querySelector("#ordenaB"));
+        if (name === "viewof ordenaC")
+          return new Inspector(document.querySelector("#ordenaC"));
         if (name === "textodorelatorio")
           return new Inspector(document.querySelector("#textopos"));
       });
@@ -198,6 +207,24 @@
     </script>
 
     <script>
+      let tableSetA = function (d) {
+        let inpt = document.getElementsByTagName("input")[1];
+        inpt.value = arg;
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      let tableSetB = function (d) {
+        let inpt = document.getElementsByTagName("input")[2];
+        inpt.value = arg;
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
+      let tableSetC = function (d) {
+        let inpt = document.getElementsByTagName("input")[3];
+        inpt.value = arg;
+        inpt.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+
       $_GET = [];
       (function () {
         corte = window.location.href.toString().indexOf("?");
