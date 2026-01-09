@@ -207,19 +207,19 @@
     </script>
 
     <script>
-      let tableSetA = function (d) {
+      let tableSetA = function (arg) {
         let inpt = document.getElementsByTagName("input")[1];
         inpt.value = arg;
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
       };
 
-      let tableSetB = function (d) {
+      let tableSetB = function (arg) {
         let inpt = document.getElementsByTagName("input")[2];
         inpt.value = arg;
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
       };
 
-      let tableSetC = function (d) {
+      let tableSetC = function (arg) {
         let inpt = document.getElementsByTagName("input")[3];
         inpt.value = arg;
         inpt.dispatchEvent(new Event("input", { bubbles: true }));
