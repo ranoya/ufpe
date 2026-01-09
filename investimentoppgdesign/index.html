@@ -248,7 +248,7 @@
       let detais = false;
       let toggledetalhes = function () {
         if (!detais) {
-          detais = false;
+          detais = true;
           document.getElementById("iconelistaprodutos").innerHTML = `
           <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
             <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
@@ -257,7 +257,7 @@
             .getElementById("listadetalheprodutos")
             .classList.add("abrelista");
         } else {
-          detais = true;
+          detais = false;
           document.getElementById("iconelistaprodutos").innerHTML = `
           <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
             <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
