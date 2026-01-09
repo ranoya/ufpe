@@ -244,6 +244,29 @@
           }
         }, 100);
       }
+
+      let detais = false;
+      let toggledetalhes = function () {
+        if (!detais) {
+          detais = false;
+          document.getElementById("iconelistaprodutos").innerHTML = `
+          <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
+            <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
+            `;
+          document
+            .getElementById("listadetalheprodutos")
+            .classList.add("abrelista");
+        } else {
+          detais = true;
+          document.getElementById("iconelistaprodutos").innerHTML = `
+          <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
+            <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
+            <line x1="39.5" y1="25" x2="39.5" y2="51" stroke-width="3"/>`;
+          document
+            .getElementById("listadetalheprodutos")
+            .classList.remove("abrelista");
+        }
+      };
     </script>
   </body>
 </html>
