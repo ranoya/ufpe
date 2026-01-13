@@ -40,6 +40,34 @@
         border: 0;
       }
 
+      ::-webkit-scrollbar {
+        width: 8px;
+        width: 1rem;
+        background-color: #fffef5;
+        opacity: 0.2;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #383838 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 50%
+        );
+        background-image: repeating-linear-gradient(
+          45deg,
+          #adadad 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 25%
+        );
+        border-left: 1px solid black;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        width: 8px;
+        background-color: black;
+      }
+
       body {
         margin: 40px;
         margin-bottom: 80px;
