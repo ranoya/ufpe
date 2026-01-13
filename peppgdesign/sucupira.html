@@ -284,7 +284,7 @@
           indices = document.querySelectorAll("a.indice");
           let code = "";
 
-          for (let i = 0; i < indices.length; i++) {
+          for (let i = indices.length - 1; i >= 0; i--) {
             code += `<div onclick="goto('${indices[i].name}')">${indices[i].name}</div>`;
           }
 
