@@ -34,6 +34,8 @@
     <script src="https://slidelines.vercel.app/slideslvmin.js"></script>
 
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=SUSE+Mono:ital,wght@0,100..800;1,100..800&display=swap");
+
       html {
         margin: 0;
         padding: 0;
@@ -77,7 +79,7 @@
       #sumario {
         position: fixed;
         right: 15px;
-        bottom: 1px;
+        bottom: 15px;
         width: 150px;
         height: calc(100dvh - 30px);
         display: none;
@@ -103,6 +105,11 @@
         padding: 4px 10px 4px 10px;
         margin-top: 1px;
         border-right: 6px solid #c5c5c500;
+        font-family: "SUSE Mono", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 200;
+        font-style: normal;
+        font-size: 11px;
       }
 
       #sumario div:hover {
@@ -227,6 +234,7 @@
   </head>
 
   <body>
+    <div id="sumario"></div>
     <div id="titulo"></div>
     <div id="textopre"></div>
     <div id="timeline"></div>
@@ -267,7 +275,7 @@
           let code = "";
 
           for (let i = 0; i < indices.length; i++) {
-            code += `<div onclick="goto('${indices[i].name}'">${indices[i].name}</div>`;
+            code += `<div onclick="goto('${indices[i].name}')">${indices[i].name}</div>`;
           }
 
           document.getElementById("sumario").innerHTML = code;
