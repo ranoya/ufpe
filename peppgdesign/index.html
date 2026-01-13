@@ -74,6 +74,48 @@
         margin-right: max(40px, calc(50% - 630px));
       }
 
+      #sumario {
+        position: fixed;
+        right: 15px;
+        bottom: 1px;
+        width: 150px;
+        height: calc(100dvh - 30px);
+        display: none;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        align-content: flex-end;
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+
+      a.indice {
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+      }
+
+      #sumario div {
+        color: #888888;
+        margin-top: 1px;
+        transition: all 0.4s ease-in;
+        cursor: pointer;
+        padding: 4px 10px 4px 10px;
+        margin-top: 1px;
+        border-right: 6px solid #c5c5c500;
+      }
+
+      #sumario div:hover {
+        transition: all 0.4s ease-in;
+        border-right: 28px solid #c5c5c5;
+      }
+
+      @media screen and (min-width: 1500px) {
+        #sumário {
+          display: flex;
+        }
+      }
+
       #timeline {
         grid-template-columns: 1fr !important;
         max-width: 1270px;
@@ -215,6 +257,29 @@
         "https://docs.google.com/spreadsheets/d/1zZSpzDJGebYaZ6JG0d3PNopkUfleDWkvoUmakKv4UyY/edit?gid=1365555194#gid=1365555194",
         populatimeline
       );
+
+      let mudaprog = setInterval(() => {
+        let teste = document.getElementById("textopos");
+        if (teste.innerHTML != "") {
+          clearInterval(mudaprog);
+
+          indices = document.querySelectorAll("a.indice");
+          let code = "";
+
+          for (let i = 0; i < indices.length; i++) {
+            code += `<div onclick="goto('${indices[i].name}'">${indices[i].name}</div>`;
+          }
+
+          document.getElementById("sumario").innerHTML = code;
+        }
+      }, 100);
+
+      let goto = function (who) {
+        document.getElementById(who).scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      };
     </script>
   </body>
 </html>
