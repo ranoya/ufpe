@@ -1,0 +1,231 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="pinterest" content="nopin" />
+    <meta name="pinterest" content="nohover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="keywords" content="" />
+    <title>Relatório de gestão do PPGDesign</title>
+    <meta property="og:title" content="Relatório de gestão do PPGDesign" />
+    <meta name="generator" content="artesanal" />
+    <meta name="description" content="Relatório de gestão do PPGDesign" />
+    <meta
+      property="og:description"
+      content="Relatório de gestão do PPGDesign"
+    />
+    <meta name="author" content="Guilherme Ranoya" />
+    <meta property="og:url" content="https://ufpe.vercel.app/peppgdesign" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:site_name" content="Relatório de gestão do PPGDesign" />
+    <meta name="application-name" content="Relatório de gestão do PPGDesign" />
+
+    <script src="https://datat.vercel.app/basicsmin.js"></script>
+
+    <style>
+      html {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      body {
+        margin: 40px;
+        margin-bottom: 80px;
+        margin-left: max(40px, calc(50% - 630px));
+        margin-right: max(40px, calc(50% - 630px));
+      }
+
+      #timeline {
+        grid-template-columns: 1fr !important;
+        max-width: 1270px;
+      }
+
+      .slidelinelvv {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 2fr !important;
+        gap: 20px 30px;
+        gap: 10px 10px !important;
+      }
+
+      .slidelinelvv_track1,
+      .slidelinelvv_track2,
+      .slidelinelvv_track3 {
+        box-shadow: 20px 15px 20px 0px #00000017;
+      }
+
+      .slidelinelvv_track1_cont {
+        top: 50px !important;
+        font-size: 24px;
+        font-weight: bolder;
+        align-self: self-start;
+        padding-bottom: 70px;
+      }
+
+      .slidelinelvv_track2_cont {
+        top: 50px !important;
+        font-size: 20px;
+        line-height: 22px;
+        margin-bottom: 15px;
+        align-self: self-start;
+        padding-bottom: 70px;
+      }
+
+      .slidelinelvv_track3_cont {
+        width: 100%;
+        align-self: self-start;
+        padding-bottom: 70px;
+        font-size: 18px;
+        line-height: 24px;
+        margin-top: 10px;
+      }
+
+      .slidelinelvv_track3_cont b {
+        font-style: italic;
+        display: block;
+        margin-bottom: -10px;
+      }
+
+      .slidelinelvv_track3_cont .b2 {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 15px 15px;
+        padding-left: 15px;
+        border-left: 1px dashed #dddddd;
+        padding-right: 45px;
+        padding-top: 20px;
+      }
+
+      .slidelinelvv_track2_cont .b2,
+      .slidelinelvv_track1_cont .b2 {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 15px 15px;
+        padding-right: 25px;
+        padding-top: 20px;
+      }
+
+      .b2 div:nth-child(1),
+      .b2 div:nth-child(3),
+      .b2 div:nth-child(5),
+      .b2 div:nth-child(7),
+      .b2 div:nth-child(9),
+      .b2 div:nth-child(11),
+      .b2 div:nth-child(13),
+      .b2 div:nth-child(15),
+      .b2 div:nth-child(17),
+      .b2 div:nth-child(19),
+      .b2 div:nth-child(21),
+      .b2 div:nth-child(23),
+      .b2 div:nth-child(25) {
+        background-color: black;
+        color: white;
+        justify-items: start;
+        align-self: start;
+        text-align: center;
+        font-weight: bolder;
+        font-size: 12px;
+      }
+
+      .slidelinelvv_track1_cont .b2 div:nth-child(1),
+      .slidelinelvv_track1_cont .b2 div:nth-child(3),
+      .slidelinelvv_track1_cont .b2 div:nth-child(5),
+      .slidelinelvv_track1_cont .b2 div:nth-child(7),
+      .slidelinelvv_track1_cont .b2 div:nth-child(9),
+      .slidelinelvv_track1_cont .b2 div:nth-child(11),
+      .slidelinelvv_track1_cont .b2 div:nth-child(13),
+      .slidelinelvv_track1_cont .b2 div:nth-child(15),
+      .slidelinelvv_track1_cont .b2 div:nth-child(17),
+      .slidelinelvv_track1_cont .b2 div:nth-child(19),
+      .slidelinelvv_track1_cont .b2 div:nth-child(21),
+      .slidelinelvv_track1_cont .b2 div:nth-child(23),
+      .slidelinelvv_track1_cont .b2 div:nth-child(25) {
+        font-size: 24px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="ano" style="display: none"></div>
+    <div id="textopos"></div>
+
+    <script type="module">
+      import {
+        Runtime,
+        Inspector,
+      } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
+      import define from "https://api.observablehq.com/@ranoya/planejamentoestrategico_ppgdesign.js?v=4";
+      new Runtime().module(define, (name) => {
+        if (name === "viewof anorelatorio")
+          return new Inspector(document.querySelector("#ano"));
+
+        if (name === "relatoriodagestao")
+          return new Inspector(document.querySelector("#textopos"));
+      });
+    </script>
+
+    <script>
+      $_GET = [];
+      (function () {
+        corte = window.location.href.toString().indexOf("?");
+        if (corte > 0) {
+          argumento = window.location.href.toString().substring(corte + 1);
+          argumentos = argumento.split("&");
+          for (arg in argumentos) {
+            let argCorte = argumentos[arg].indexOf("=");
+            $_GET[argumentos[arg].substring(0, argCorte)] = argumentos[
+              arg
+            ].substring(argCorte + 1);
+          }
+        }
+      })();
+
+      if (
+        typeof $_GET["ano"] != "undefined" &&
+        $_GET["ano"] != null &&
+        $_GET["ano"] != ""
+      ) {
+        let mudaprog = setInterval(() => {
+          let inpt = document.getElementsByTagName("input")[0];
+          if (inpt.value != decodeURIComponent($_GET["ano"])) {
+            inpt.value = decodeURIComponent($_GET["ano"]);
+            inpt.dispatchEvent(new Event("input", { bubbles: true }));
+          } else {
+            clearInterval(mudaprog);
+          }
+        }, 100);
+      }
+
+      let detais = false;
+      let toggledetalhes = function () {
+        if (!detais) {
+          detais = true;
+          document.getElementById("iconelistaprodutos").innerHTML = `
+          <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
+            <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
+            `;
+          document
+            .getElementById("listadetalheprodutos")
+            .classList.add("abrelista");
+        } else {
+          detais = false;
+          document.getElementById("iconelistaprodutos").innerHTML = `
+          <circle cx="39" cy="38" r="30.5" stroke-width="3"/>
+            <line x1="26" y1="38.5" x2="52" y2="38.5" stroke-width="3"/>
+            <line x1="39.5" y1="25" x2="39.5" y2="51" stroke-width="3"/>`;
+          document
+            .getElementById("listadetalheprodutos")
+            .classList.remove("abrelista");
+        }
+      };
+    </script>
+  </body>
+</html>
