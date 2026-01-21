@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -53,6 +53,75 @@
         margin-bottom: 80px;
         margin-left: max(40px, calc(50% - 630px));
         margin-right: max(40px, calc(50% - 630px));
+      }
+
+      ::-webkit-scrollbar {
+        width: 12px;
+        background-color: #fffef5;
+        opacity: 0.2;
+        background-size: 4px 4px;
+        background-image: repeating-linear-gradient(
+          45deg,
+          #383838 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 50%
+        );
+        background-image: repeating-linear-gradient(
+          45deg,
+          #adadad 0,
+          #383838 0.4px,
+          #fffef5 0,
+          #fffef5 25%
+        );
+        /* border-left: 1px solid #a5a5a5; */
+      }
+
+      #sumario {
+        position: fixed;
+        right: 15px;
+        bottom: 23px;
+        width: 150px;
+        height: calc(100dvh - 30px);
+        display: none;
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        align-content: flex-end;
+        justify-content: flex-start;
+        align-items: flex-end;
+      }
+
+      a.indice {
+        overflow: hidden;
+        width: 1px;
+        height: 1px;
+        opacity: 0;
+      }
+
+      #sumario div {
+        color: #888888;
+        margin-top: 1px;
+        transition: all 0.4s ease-in;
+        cursor: pointer;
+        padding: 4px 10px 4px 10px;
+        margin-top: 1px;
+        border-right: 6px solid #c5c5c500;
+        font-family: "SUSE Mono", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 200;
+        font-style: normal;
+        font-size: 11px;
+      }
+
+      #sumario div:hover {
+        transition: all 0.4s ease-in;
+        border-right: 28px solid #c5c5c5;
+      }
+
+      @media screen and (min-width: 1500px) {
+        #sumario {
+          display: flex;
+        }
       }
 
       #timeline {
@@ -266,6 +335,29 @@
             .getElementById("listadetalheprodutos")
             .classList.remove("abrelista");
         }
+      };
+
+      let mudaprog = setInterval(() => {
+        let teste = document.getElementById("textopos");
+        if (teste.innerHTML != "") {
+          clearInterval(mudaprog);
+
+          indices = document.querySelectorAll("a.indice");
+          let code = "";
+
+          for (let i = indices.length - 1; i >= 0; i--) {
+            code += `<div onclick="goto('${indices[i].name}')">${indices[i].name}</div>`;
+          }
+
+          document.getElementById("sumario").innerHTML = code;
+        }
+      }, 100);
+
+      let goto = function (who) {
+        document.getElementById(who).scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
       };
     </script>
   </body>
