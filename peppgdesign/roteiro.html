@@ -15,11 +15,11 @@
     <meta name="generator" content="artesanal" />
     <meta
       name="description"
-      content="Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029."
+      content="Diagnóstico do Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029."
     />
     <meta
       property="og:description"
-      content="Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029."
+      content="Diagnóstico do Planejamento Estratégico para o PPGDesign com base no PIPG 2025-2029."
     />
     <meta name="author" content="Guilherme Ranoya" />
     <meta property="og:url" content="https://ufpe.vercel.app/peppgdesign" />
@@ -148,11 +148,6 @@
         padding-bottom: 70px;
       }
 
-      #acoesestrategicas .slidelinelvv_track1_cont {
-        font-size: 20px;
-        line-height: 22px;
-      }
-
       .slidelinelvv_track2_cont {
         top: 50px !important;
         font-size: 20px;
@@ -239,51 +234,29 @@
   <body>
     <div id="sumario"></div>
     <div id="titulo"></div>
-    <div id="identidade"></div>
-
-    <div id="cenario"></div>
-
-    <div id="acoes"></div>
-
-    <div id="acoesestrategicas"></div>
-
-    <div id="metodologia"></div>
-    <div id="dadoscenario"></div>
+    <div id="textopre"></div>
+    <div id="timeline"></div>
+    <div id="textopos"></div>
 
     <script type="module">
       import {
         Runtime,
         Inspector,
       } from "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js";
-      import define from "https://api.observablehq.com/@ranoya/planejamentoestrategico_20252029.js?v=4";
+      import define from "https://api.observablehq.com/@ranoya/planejamentoestrategico_ppgdesign.js?v=4";
       new Runtime().module(define, (name) => {
         if (name === "titulo")
           return new Inspector(document.querySelector("#titulo"));
-        if (name === "identidade")
-          return new Inspector(document.querySelector("#identidade"));
-        if (name === "cenario")
-          return new Inspector(document.querySelector("#cenario"));
-        if (name === "acoes")
-          return new Inspector(document.querySelector("#acoes"));
-        if (name === "metodologia")
-          return new Inspector(document.querySelector("#metodologia"));
+        if (name === "texto")
+          return new Inspector(document.querySelector("#textopre"));
+        if (name === "pospipg")
+          return new Inspector(document.querySelector("#textopos"));
       });
     </script>
 
     <script>
       let populatimeline = function (d) {
-        slidelvv("dadoscenario", d, "Eixos", "Objetivos", "Situacao", true);
-      };
-
-      let populaacoes = function (d) {
-        slidelvv(
-          "acoesestrategicas",
-          d,
-          "Eixos",
-          "Objetivos",
-          "Situacao",
-          true,
-        );
+        slidelvv("timeline", d, "Eixos", "Objetivos", "Situacao", true);
       };
 
       gsdata(
@@ -291,13 +264,8 @@
         populatimeline,
       );
 
-      gsdata(
-        "https://docs.google.com/spreadsheets/d/1zZSpzDJGebYaZ6JG0d3PNopkUfleDWkvoUmakKv4UyY/edit?gid=825070901#gid=825070901",
-        populaacoes,
-      );
-
       let mudaprog = setInterval(() => {
-        let teste = document.getElementById("metodologia");
+        let teste = document.getElementById("textopos");
         if (teste.innerHTML != "") {
           clearInterval(mudaprog);
 
