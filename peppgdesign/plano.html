@@ -238,6 +238,8 @@
 
     <div id="cenario"></div>
 
+    <div id="acoes"></div>
+
     <div id="acoesestrategicas"></div>
 
     <div id="metodologia"></div>
@@ -256,6 +258,8 @@
           return new Inspector(document.querySelector("#identidade"));
         if (name === "cenario")
           return new Inspector(document.querySelector("#cenario"));
+        if (name === "acoes")
+          return new Inspector(document.querySelector("#acoes"));
         if (name === "metodologia")
           return new Inspector(document.querySelector("#metodologia"));
       });
