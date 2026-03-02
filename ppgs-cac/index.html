@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html>
   <head>
@@ -41,6 +41,31 @@
       body {
         margin: 40px;
       }
+
+      @media print {
+        #observablehq-viewof-filtros-a3856ea4,
+        #observablehq-semestres-a3856ea4,
+        #observablehq-botoes-a3856ea4,
+        #observablehq-botoesprogramas {
+          display: none;
+        }
+
+        .manha,
+        .tarde {
+          min-height: 90dvh;
+        }
+
+        body {
+          margin: 20px !important;
+          margin-top: 0 !important;
+          padding: 0 !important;
+        }
+
+        html {
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+      }
     </style>
   </head>
 
@@ -53,11 +78,11 @@
     ></div>
     <div id="observablehq-viewof-shadowprograma" style="display: none"></div>
     <div id="observablehq-viewof-filtramesmo"></div>
-    <br /><br />
-    <div id="observablehq-semestres-a3856ea4"></div>
+
+    <div id="observablehq-semestres-a3856ea4" style="margin-top: 45px"></div>
     <div id="observablehq-botoes-a3856ea4"></div>
-    <br /><br />
-    <div id="observablehq-viz-a3856ea4"></div>
+
+    <div id="observablehq-viz-a3856ea4" style="margin-top: 45px"></div>
     <div id="observablehq-estaile-a3856ea4"></div>
   </body>
 
@@ -74,44 +99,44 @@
     new Runtime().module(define, (name) => {
       if (name === "viewof filtros")
         return new Inspector(
-          document.querySelector("#observablehq-viewof-filtros-a3856ea4")
+          document.querySelector("#observablehq-viewof-filtros-a3856ea4"),
         );
       if (name === "viewof shadowfiltros")
         return new Inspector(
-          document.querySelector("#observablehq-viewof-shadowfiltros-a3856ea4")
+          document.querySelector("#observablehq-viewof-shadowfiltros-a3856ea4"),
         );
 
       if (name === "viewof shadowprograma")
         return new Inspector(
-          document.querySelector("#observablehq-viewof-shadowprograma")
+          document.querySelector("#observablehq-viewof-shadowprograma"),
         );
 
       if (name === "viewof filtramesmo")
         return new Inspector(
-          document.querySelector("#observablehq-viewof-filtramesmo")
+          document.querySelector("#observablehq-viewof-filtramesmo"),
         );
 
       if (name === "semestres")
         return new Inspector(
-          document.querySelector("#observablehq-semestres-a3856ea4")
+          document.querySelector("#observablehq-semestres-a3856ea4"),
         );
       if (name === "botoes")
         return new Inspector(
-          document.querySelector("#observablehq-botoes-a3856ea4")
+          document.querySelector("#observablehq-botoes-a3856ea4"),
         );
 
       if (name === "botoesprogramas")
         return new Inspector(
-          document.querySelector("#observablehq-botoesprogramas")
+          document.querySelector("#observablehq-botoesprogramas"),
         );
 
       if (name === "viz")
         return new Inspector(
-          document.querySelector("#observablehq-viz-a3856ea4")
+          document.querySelector("#observablehq-viz-a3856ea4"),
         );
       if (name === "estaile")
         return new Inspector(
-          document.querySelector("#observablehq-estaile-a3856ea4")
+          document.querySelector("#observablehq-estaile-a3856ea4"),
         );
       return ["viewof grade", "periodos"].includes(name);
     });
@@ -162,7 +187,7 @@
         } else {
           clearInterval(mudaprog);
           document.getElementById(
-            "observablehq-botoesprogramas"
+            "observablehq-botoesprogramas",
           ).style.display = "none";
         }
       }, 100);
