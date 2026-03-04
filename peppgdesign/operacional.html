@@ -241,6 +241,7 @@
     <div id="titulo"></div>
     <div id="contexto"></div>
     <div id="acoesestrategicas"></div>
+    <div id="sintese"></div>
 
     <script type="module">
       import {
@@ -253,6 +254,8 @@
           return new Inspector(document.querySelector("#titulo"));
         if (name === "introopera")
           return new Inspector(document.querySelector("#contexto"));
+        if (name === "sintese")
+          return new Inspector(document.querySelector("#sintese"));
       });
     </script>
 
